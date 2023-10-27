@@ -14,6 +14,7 @@ for _ in range(1000):
 
 	if terminated or truncated:
 		print(" oops .. terminated or truncated !!\n")
+		input()
 		observation, info = env.reset()
 
 env.close()
