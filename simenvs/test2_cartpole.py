@@ -3,6 +3,9 @@ env = gym.make("CartPole-v1", render_mode="human")
 
 total_reward=0
 observation, info = env.reset(seed=42)
+
+import time #only to visually see end of episode
+
 for _ in range(1000):
 
     action = env.action_space.sample()
@@ -10,12 +13,13 @@ for _ in range(1000):
 
     observation, reward, terminated, truncated, info = env.step(action)
     total_reward += reward
-    print("observation: ", observation, "\n reward: ", reward, "total reward: ", total_reward, "\n")
+    print("observation: ", observation, "\n reward: ", reward, "total reward: ", total_reward, "info: ", info, "\n")
 	
 
     if terminated or truncated:
         print("end of episode\n")
-        input()
+        #input() -- this makes render window go BG
+        time.sleep(2)
         total_reward=0
         observation, info = env.reset()
 

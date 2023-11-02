@@ -5,6 +5,8 @@ import gymnasium as gym
 env = gym.make("HumanoidStandup", render_mode="human")
 observation, info = env.reset(seed=42)
 
+import time
+
 for _ in range(1000):
 	action = env.action_space.sample() # (take action) this is where I will insert my policy (sample for now)
 	print ("action : ", action, "\n")
@@ -14,7 +16,8 @@ for _ in range(1000):
 
 	if terminated or truncated:
 		print(" oops .. terminated or truncated !!\n")
-		input()
+		#input()
+		time.sleep(2)
 		observation, info = env.reset()
 
 env.close()
