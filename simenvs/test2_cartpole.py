@@ -1,5 +1,6 @@
 import gymnasium as gym
 env = gym.make("CartPole-v1", render_mode="human")
+#env = gym.wrappers.Monitor(env, "recording")
 
 total_reward=0
 observation, info = env.reset(seed=42)
