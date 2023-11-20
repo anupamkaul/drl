@@ -25,6 +25,7 @@ import gymnasium as gym
 
 env = gym.make("Walker2d", render_mode="human")
 
+# https://gymnasium.farama.org/environments/mujoco/
 #env = gym.make("HalfCheetah", render_mode="human")
 
 #env = gym.make("Hopper", render_mode="human")
@@ -38,6 +39,12 @@ env = gym.make("Walker2d", render_mode="human")
 #env = gym.make("Blackjack", render_mode="human")
 
 #env = gym.make("Taxi", render_mode="human")
+
+# atari games: https://gymnasium.farama.org/environments/atari/
+# or the prev: https://www.gymlibrary.dev/environments/atari/
+# pong: /home/anupam/github_drl/Gymnasium/docs/environments/atari/pong.md
+
+# own env: https://www.gymlibrary.dev/content/environment_creation/
 
 
 observation, info = env.reset(seed=42)

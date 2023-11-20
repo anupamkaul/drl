@@ -1,5 +1,7 @@
 import gymnasium as gym
 
+#details: https://gymnasium.farama.org/environments/classic_control/cart_pole/
+
 # showing usage of wrapper to :
 
 # explore vs exploit (assume sample() means sampling from a learnt policy/agent. Then at epsilon

@@ -1,4 +1,6 @@
 import gymnasium as gym
+
+# https://gymnasium.farama.org/environments/classic_control/cart_pole/
 env = gym.make("CartPole-v1", render_mode="human")
 #env = gym.wrappers.Monitor(env, "recording")
 
