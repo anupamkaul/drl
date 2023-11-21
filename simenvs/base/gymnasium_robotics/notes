@@ -1,0 +1,34 @@
+~/github_drl/Gymnasium-Robotics/gymnasium_robotics/envs$ grep -nir gym.make ./
+
+./shadow_dexterous_hand/reach.py:315:    env = gym.make('HandReachDense-v1')
+./shadow_dexterous_hand/reach.py:386:    env = gym.make('HandReach-v1', max_episode_steps=100)
+./shadow_dexterous_hand/manipulate_block.py:170:    env = gym.make('HandManipulateBlock-v1')
+./shadow_dexterous_hand/manipulate_block.py:197:    env = gym.make('HandManipulateBlock-v1', max_episode_steps=100)
+./shadow_dexterous_hand/manipulate_egg.py:173:    env = gym.make('HandManipulateEgg-v1')
+./shadow_dexterous_hand/manipulate_egg.py:200:    env = gym.make('HandManipulateEgg-v1', max_episode_steps=100)
+./shadow_dexterous_hand/manipulate_pen.py:172:    env = gym.make('HandManipulatePen-v1')
+./shadow_dexterous_hand/manipulate_pen.py:199:    env = gym.make('HandManipulatePen-v1', max_episode_steps=100)
+./franka_kitchen/kitchen_env.py:67:    env = gym.make('FrankaKitchen-v1', tasks_to_complete=['microwave', 'kettle'])
+./fetch/reach.py:86:    env = gym.make('FetchReachDense-v2')
+./fetch/reach.py:108:    env = gym.make('FetchReach-v2', max_episode_steps=100)
+./fetch/slide.py:124:    env = gym.make('FetchSlideDense-v2')
+./fetch/slide.py:149:    env = gym.make('FetchSlide-v2', max_episode_steps=100)
+./fetch/pick_and_place.py:96:    env = gym.make('FetchPickAndPlaceDense-v2')
+./fetch/pick_and_place.py:122:    env = gym.make('FetchPickAndPlace-v2', max_episode_steps=100)
+./fetch/push.py:124:    env = gym.make('FetchPushDense-v2')
+./fetch/push.py:150:    env = gym.make('FetchPush-v2', max_episode_steps=100)
+./maze/point_maze.py:204:    env = gym.make('PointMaze_UMaze-v3', maze_map=example_map)
+./maze/point_maze.py:257:    env = gym.make('PointMaze_UMazeDense-v3')
+./maze/point_maze.py:290:    env = gym.make('PointMaze_UMaze-v3', max_episode_steps=100)
+./maze/ant_maze_v4.py:73:    env = gym.make('AntMaze_UMaze-v4', maze_map=example_map)
+./maze/ant_maze_v4.py:162:    env = gym.make('AntMaze_UMaze-v4')
+./maze/ant_maze_v4.py:196:    env = gym.make('AntMaze_UMaze-v4', max_episode_steps=100)
+./adroit_hand/adroit_door.py:136:    The `sparse` reward variant of the environment can be initialized by calling `gym.make('AdroitHandDoorSparse-v1')`.
+./adroit_hand/adroit_door.py:167:    env = gym.make('AdroitHandDoor-v1', max_episode_steps=400)
+./adroit_hand/adroit_relocate.py:137:    The `sparse` reward variant of the environment can be initialized by calling `gym.make('AdroitHandReloateSparse-v1')`.
+./adroit_hand/adroit_relocate.py:169:    env = gym.make('AdroitHandRelocate-v1', max_episode_steps=400)
+./adroit_hand/adroit_hammer.py:145:    The `sparse` reward variant of the environment can be initialized by calling `gym.make('AdroitHandHammerSparse-v1')`.
+./adroit_hand/adroit_hammer.py:176:    env = gym.make('AdroitHandHammer-v1', max_episode_steps=400)
+./adroit_hand/adroit_pen.py:137:    The `sparse` reward variant of the environment can be initialized by calling `gym.make('AdroitHandPenSparse-v1')`.
+./adroit_hand/adroit_pen.py:169:    env = gym.make('AdroitHandPen-v1', max_episode_steps=400)
+
