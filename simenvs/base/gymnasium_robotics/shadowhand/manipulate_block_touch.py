@@ -68,11 +68,17 @@ environment and its variations.
 import time #only to visually see end of episode
 
 # continuous touch sensor environments
-env = gym.make("HandManipulateBlock_ContinuousTouchSensors-v1", max_episode_steps=150, render_mode="human")
+#env = gym.make("HandManipulateBlock_ContinuousTouchSensors-v1", max_episode_steps=150, render_mode="human")
 #env = gym.make("HandManipulateBlockRotateZ_ContinuousTouchSensors-v1", max_episode_steps=150, render_mode="human")
 #env = gym.make("HandManipulateBlockRotateParallel_ContinuousTouchSensors-v1", max_episode_steps=150, render_mode="human")
 #env = gym.make("HandManipulateBlockRotateXYZ_ContinuousTouchSensors-v1", max_episode_steps=150, render_mode="human")
 # doesn't exist: env = gym.make("HandManipulateBlockFull_ContinuousTouchSensors-v1", max_episode_steps=150, render_mode="human")
+
+# boolean touch sensor environments (boolean values only)
+#env = gym.make("HandManipulateBlock_BooleanTouchSensors-v1", max_episode_steps=150, render_mode="human")
+#env = gym.make("HandManipulateBlockRotateZ_BooleanTouchSensors-v1", max_episode_steps=150, render_mode="human")
+#env = gym.make("HandManipulateBlockRotateParallel_BooleanTouchSensors-v1", max_episode_steps=150, render_mode="human")
+env = gym.make("HandManipulateBlockRotateXYZ_BooleanTouchSensors-v1", max_episode_steps=150, render_mode="human")
 
 env.reset()
 obs, reward, terminated, truncated, info = env.step(env.action_space.sample())
