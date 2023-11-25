@@ -49,7 +49,15 @@ info, rewards, starting state, episode end, arguements etc are described in docu
 
 import time #only to visually see end of episode
 
-env = gym.make('FrankaKitchen-v1', tasks_to_complete=['microwave', 'kettle'], render_mode="human")
+#env = gym.make('FrankaKitchen-v1', tasks_to_complete=['bottom burner'], render_mode="human")
+#env = gym.make('FrankaKitchen-v1', tasks_to_complete=['top burner'], render_mode="human")
+#env = gym.make('FrankaKitchen-v1', tasks_to_complete=['light switch'], render_mode="human")
+#env = gym.make('FrankaKitchen-v1', tasks_to_complete=['slide cabinet', 'kettle'], render_mode="human")
+#env = gym.make('FrankaKitchen-v1', tasks_to_complete=['hinge cabinet', 'kettle'], render_mode="human")
+#env = gym.make('FrankaKitchen-v1', tasks_to_complete=['kettle'], render_mode="human")
+#env = gym.make('FrankaKitchen-v1', tasks_to_complete=['microwave', 'kettle'], render_mode="human")
+env = gym.make('FrankaKitchen-v1', tasks_to_complete=['microwave'], render_mode="human")
+#env = gym.make('FrankaKitchen-v1', tasks_to_complete=['microwave', 'kettle', 'top burner', 'light switch'], render_mode="human")
 
 env.reset()
 obs, reward, terminated, truncated, info = env.step(env.action_space.sample())
