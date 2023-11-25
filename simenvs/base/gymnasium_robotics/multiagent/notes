@@ -1,0 +1,26 @@
+Based on the popular single-agent MuJoCo benchmark [4], MAMuJoCo features a wide variety of novel
+robotic control tasks in which "multiple agents within a single robot have to solve a task cooperatively"
+
+Multiple agents are created based on the notion on "partitioning" of the joint spaces of a mujoco
+enabled robot
+
+docs: https://robotics.farama.org/envs/MaMuJoCo/
+
+https://robotics.farama.org/envs/MaMuJoCo/ma_ant/
+https://robotics.farama.org/envs/MaMuJoCo/ma_coupled_half_cheetah/
+https://robotics.farama.org/envs/MaMuJoCo/ma_half_cheetah/
+https://robotics.farama.org/envs/MaMuJoCo/ma_hopper/
+https://robotics.farama.org/envs/MaMuJoCo/ma_humanoid_standup/
+https://robotics.farama.org/envs/MaMuJoCo/ma_humanoid/
+https://robotics.farama.org/envs/MaMuJoCo/ma_reacher/
+https://robotics.farama.org/envs/MaMuJoCo/ma_swimmer/
+https://robotics.farama.org/envs/MaMuJoCo/ma_pusher/
+https://robotics.farama.org/envs/MaMuJoCo/ma_walker2d/
+https://robotics.farama.org/envs/MaMuJoCo/ma_single/
+
+since this uses pettingzoo, see stuff like:
+https://pettingzoo.farama.org/content/basic_usage/
+
+(and it goes to the parallel_api usage section)
+
+
