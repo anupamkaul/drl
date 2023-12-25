@@ -9,7 +9,7 @@ import gymnasium as gym
 #env = gym.make("FrozenLake", map_name="8x8", is_slippery=False, render_mode="human") # non-slippery mode
 #env = gym.make("FrozenLake", desc = None , map_name="8x8",  is_slippery=False, render_mode="human") # generate a random map each time
 
-from gym.envs.toy_text.frozen_lake import generate_random_map
+from gymnasium.envs.toy_text.frozen_lake import generate_random_map
 env = gym.make("FrozenLake", desc = generate_random_map(8), map_name="8x8",  is_slippery=False, render_mode="human") # generate a random map each time
 
 observation, info = env.reset(seed=42)

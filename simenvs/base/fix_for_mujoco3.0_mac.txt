@@ -1,0 +1,10 @@
+solver_iter error showing up on macbook (with pip install mujoco = version 3.0).
+
+Fix was on Oct-18
+(https://github.com/Farama-Foundation/Gymnasium/pull/746/commits)
+
+Manually applied https://github.com/Farama-Foundation/Gymnasium/pull/746/commits/59cf77998f875e8c34f336ec491f5049212744a2 
+to file gymnasium/envs/mujoco/mujoco_rendering.py (in site_packages where my pip is installed)
+
+The fixed the issue and mujoco humanoid models render on my macbook with RL code
+
