@@ -16,7 +16,7 @@ for _ in range(1000):
 
 	if terminated or truncated:
 		print(" oops .. terminated or truncated !!\n")
-		time.sleep(2)
+		time.sleep(1)
 		observation, info = env.reset()
 
 env.close()
