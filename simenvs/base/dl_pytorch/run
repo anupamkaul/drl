@@ -1,0 +1,16 @@
+python example1.py
+#no errors
+
+tensorboard --logdir runs --host localhost
+
+#2023-11-27 00:22:25.597248: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+#2023-11-27 00:22:25.645846: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+#2023-11-27 00:22:25.646232: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+#To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+#2023-11-27 00:22:26.307930: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+#TensorBoard 2.13.0 at http://localhost:6006/ (Press CTRL+C to quit)
+
+browser: http://localhost.6006
+
+
+
