@@ -8,3 +8,12 @@ to file gymnasium/envs/mujoco/mujoco_rendering.py (in site_packages where my pip
 
 The fixed the issue and mujoco humanoid models render on my macbook with RL code
 
+---
+
+other mac notes:
+
+installed CoppeliaSim version for my macOS, unzipped to /Applications folder. Can go there an 
+type "open coppeliaSim.app" directly, or using finder can control-click and select open (this avoids
+the untrusted vendor dialogue on mac). CoppeliaSim works fine on my macbook!
+
+---
