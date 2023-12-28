@@ -168,15 +168,24 @@ def filter_batch(batch, percentile):
 	train_act = []
 
 	for example in batch:
+
+		# throw away less desirable examples from episodes
 		if example.reward < reward_bound:
 			continue
+
+		# and construct training data with elite episodes
 		train_obs.extend(map(lambda step: step.action, example.steps))
 
 		#explanations
 
+	# print the elite training set (debug)
+	print("filtered training data (raw): ", train_obs, "\n")
+
 	import torch
 	train_obs_v = torch.FloatTensor(train_obs)
 	train_act_v = torch.LongTensor(train_act)
+
+	print("filtered training data (vector): ", train_obs_v, "\n")
 	return train_obs_v, train_act_v, reward_bound, reward_mean
 
 # main glue (continues from top)
