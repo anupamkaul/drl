@@ -159,7 +159,7 @@ def filter_batch(batch, percentile):
 	reward_mean = float(np.mean(rewards))
 
 	print("filter_batch ", "rewards: ", rewards, "\n")
-	print("filter_batch ", "reward_bound: ", reward_bound, "\n")
+	print("filter_batch ", "reward_bound: ", reward_bound, "(this is the ", PERCENTILE, "th percentile)\n")
 	print("filter_batch ", "reward_mean: ", reward_mean, "\n")
 
 	#explanations galore!
@@ -179,7 +179,7 @@ def filter_batch(batch, percentile):
 		#explanations
 
 	# print the elite training set (debug)
-	print("filtered training data (raw): ", train_obs, "\n")
+	print("filtered training data (raw): ", "len: ", len(train_obs), "data: ", train_obs, "\n")
 
 	import torch
 	train_obs_v = torch.FloatTensor(train_obs)
