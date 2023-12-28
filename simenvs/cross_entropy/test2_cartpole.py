@@ -1,5 +1,6 @@
 import gymnasium as gym
 import torch.nn as nn
+import numpy as np
 
 '''
 Background
@@ -87,7 +88,7 @@ def iterate_batches(env, net, batch_size):
 	batch = []
 	episode_reward = 0.0
 	episode_steps = []
-	obs = env.reset()
+	obs, info = env.reset(seed=42)
 	sm = nn.Softmax(dim=1)
 
 	'''
@@ -113,7 +114,7 @@ def iterate_batches(env, net, batch_size):
 		# explanation of above
 
 		action = np.random.choice(len(act_probs), p = act_probs)
-		next_obs, reward, is_done, _ = env.step(action)
+		next_obs, reward, is_done, truncated, info = env.step(action)
 
 		# write some more
 
@@ -152,6 +153,7 @@ def filter_batch(batch, percentile):
 
 		#explanations
 
+	import torch
 	train_obs_v = torch.FloatTensor(train_obs)
 	train_act_v = torch.LongTensor(train_act)
 	return train_obs_v, train_act_v, reward_bound, reward_mean
