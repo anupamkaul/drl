@@ -58,8 +58,8 @@ class Net (nn.Module):
 	def forward(self, x):
 
 		print("net debug: incoming is len: ", len(x), "data: ", x)
-		#x = x.view(x.size(0), -1)
-		#print("net debug: incoming is len: ", len(x), "data: ", x)
+		x = x.view(x.size(0), -1)
+		print("net debug: incoming is len: ", len(x), "data: ", x)
 
 		return self.net(x)
 
@@ -240,6 +240,7 @@ for iter_no, batch in enumerate(iterate_batches(env, net, BATCH_SIZE)):
 	net = Net(1, len(obs_v), n_actions)
 
 	action_scores_v = net(obs_v)
+	print("From network run, action_scores_v len: ", len(action_scores_v), "data: ", action_scores_v)
 
 	# calculate cross entropy loss
 	loss_v = objective(action_scores_v, acts_v)
