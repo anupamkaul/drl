@@ -33,8 +33,9 @@ Our model's (agent's) core is a one-hidden-layer neural network, with ReLU and
 randomly, as the method is robust and converges very quickly. 
 
 '''
-
-env = gym.make("LunarLander-v2", render_mode="human", enable_wind=True)
+# https://gymnasium.farama.org/environments/classic_control/cart_pole/
+env = gym.make("CartPole-v1", render_mode="human")
+#env = gym.wrappers.Monitor(env, "recording")
 observation, info = env.reset(seed=42)
 
 HIDDEN_SIZE = 128 # single layer count of neurons
