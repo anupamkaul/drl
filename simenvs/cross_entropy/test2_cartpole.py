@@ -56,6 +56,11 @@ class Net (nn.Module):
 			nn.Linear(hidden_size, n_actions)
 		)
 	def forward(self, x):
+
+		print("net debug: incoming is len: ", len(x), "data: ", x)
+		#x = x.view(x.size(0), -1)
+		#print("net debug: incoming is len: ", len(x), "data: ", x)
+
 		return self.net(x)
 
 '''
@@ -114,7 +119,7 @@ def iterate_batches(env, net, batch_size):
 	while True:
 		obs_v = torch.FloatTensor([obs])
 		act_probs_v = sm(net(obs_v))     #apply softmax to the neural network (agent) that takes in 1 observation
-		act_probs = act_probs_v.data.numpy()[0]
+		act_probs = act_probs_v.data.numpy()[0] #how will act_probs probability dist be the one that is 'set' by Net?
 		print ("iterate_batches", " action probability: ", act_probs, "\n")
 	
 		# explanation of above
@@ -193,6 +198,10 @@ def filter_batch(batch, percentile):
 obs_size = env.observation_space.shape[0]
 n_actions = env.action_space.n
 
+# this creates Net of fixed size but obs size is different
+# not because the number of observations are different (they are always 4)
+# but because the sum total/flattened tensor then is different
+
 net = Net(obs_size, HIDDEN_SIZE, n_actions)
 objective = nn.CrossEntropyLoss()
 
@@ -226,6 +235,10 @@ for iter_no, batch in enumerate(iterate_batches(env, net, BATCH_SIZE)):
 
 	# run the network
 	print("main: run the network\n")
+
+	# bad hack: re-orient the network, is it even the same (because it needs to stabilize/gets passed)
+	net = Net(1, len(obs_v), n_actions)
+
 	action_scores_v = net(obs_v)
 
 	# calculate cross entropy loss
@@ -236,7 +249,7 @@ for iter_no, batch in enumerate(iterate_batches(env, net, BATCH_SIZE)):
 
 	# explanations
 
-	print("%d: loss=%.3f, reward_mean=%.1f, reward_bound=%.1f" % (iter_no, loss_v.item(), reward_m, reward<b))
+	print("%d: loss=%.3f, reward_mean=%.1f, reward_bound=%.1f" % (iter_no, loss_v.item(), reward_m, reward_b))
 	writer.add_scalar("loss", loss_v.item(), iter_no)
 	writer.add_scalar("reward_bound", reward_b, iter_no)
 	writer.add_scalar("reward_mean",  reward_m, iter_no)
