@@ -21,9 +21,9 @@ Steps are as follows:
 1. Play N number of episodes using our current model and environment
 2. Calculate the total reward for every episode and decide on a reward
    boundary. Usually we use some percentile of all rewards (e.g. 50th / 70th)
-3. Throw away all episodes with a reward below the boundary.
+3. Throw away all episodes with a reward below the boundary. (this is Key)
 4. Train on the remaining "elite" episodes using observations as the input
-   and issued actions as the desired output.
+   and issued actions as the desired output. (calculate cross entropy everytime)
 5. Repeat from step 1 till we are satisfied with the result.
 
 Execution:
@@ -61,10 +61,13 @@ class Net (nn.Module):
 '''
 Above is a pretty simple network: it takes a single observation from the environment as an input vector
 and outputs a number for every action that we can perform. The output from the network is a probability
-distribution over actions. Instead of including the traditional softmax non-linearity after the last step,
-(which uses exponentiation) and then calculating cross-entropy loss (which uses logarithm of probabilities)
-we'll use the pytorch class nn.CrossEntropyLoss which combines softmax and cross-entropy in a single, more
-numerically stable expression. 
+distribution over actions. 
+
+Instead of including the traditional softmax non-linearity after the last step, (which uses exponentiation) 
+and then calculating cross-entropy loss (which uses logarithm of probabilities) we'll use the pytorch class 
+nn.CrossEntropyLoss which combines softmax and cross-entropy in a single, more numerically stable expression. 
+(we will do this outside of the Net class invocation)
+Cross-Entropy loss is based on KL divergence
 
 Now let's define Episode and EpisodeStep. These are two helper classes:
 
@@ -90,6 +93,7 @@ def iterate_batches(env, net, batch_size):
 	episode_steps = []
 	obs, info = env.reset(seed=42)
 	sm = nn.Softmax(dim=1)
+	steps = 0
 
 	'''
 	The above function accepts the environment (the Env class instance from Gymnasium library), our neural network,
@@ -105,23 +109,35 @@ def iterate_batches(env, net, batch_size):
 	'''
 
 	import torch
+	import time
 
 	while True:
 		obs_v = torch.FloatTensor([obs])
 		act_probs_v = sm(net(obs_v))     #apply softmax to the neural network (agent) that takes in 1 observation
 		act_probs = act_probs_v.data.numpy()[0]
+		print ("iterate_batches", " action probability: ", act_probs, "\n")
 	
 		# explanation of above
 
 		action = np.random.choice(len(act_probs), p = act_probs)
+		print ("iterate_batches", " action: ", action, "\n")
+
 		next_obs, reward, is_done, truncated, info = env.step(action)
+		print ("iterate_batches", " observation ", next_obs, "reward ", reward)
+		steps = steps + 1
 
 		# write some more
 
 		episode_reward += reward
+		print ("iterate_batches", " episode_reward: ", episode_reward, "\n")
 		episode_steps.append(EpisodeStep(observation=obs, action=action))
 
 		if is_done:
+
+			print("iterate_batches", "episode ", len(batch) + 1, " TERMINATED (after ", steps, "steps)")
+			print("batch up this episode..\n")
+			time.sleep(2)
+
 			batch.append(Episode(reward=episode_reward, steps = episode_steps))	
 			episode_reward = 0.0
 			episode_steps = []
@@ -132,6 +148,7 @@ def iterate_batches(env, net, batch_size):
 				yield batch
 
 				batch = []
+				steps = 0
 				obs = next_obs
 
 
@@ -140,6 +157,10 @@ def filter_batch(batch, percentile):
 	rewards = list(map(lambda s: s.reward, batch))
 	reward_bound = np.percentile(rewards, percentile)
 	reward_mean = float(np.mean(rewards))
+
+	print("filter_batch ", "rewards: ", rewards, "\n")
+	print("filter_batch ", "reward_bound: ", reward_bound, "\n")
+	print("filter_batch ", "reward_mean: ", reward_mean, "\n")
 
 	#explanations galore!
 
@@ -174,12 +195,34 @@ writer = SummaryWriter()
 
 #explanations
 
+import time
+
+'''
+We call iterate_batches and filter them out, and then run our network,
+optimize it, calculate our losses, and get our mean_rewards calculated
+as many times until we're satisfied that mean_rewards is now a good number
+to indicate the RL problem has been solved
+'''
+
 for iter_no, batch in enumerate(iterate_batches(env, net, BATCH_SIZE)):
+
+	print("main: from iterate_batches ", "iter_no: ", iter_no, "batch: ", batch, "\n")
+	time.sleep(2)
+
 	obs_v, acts_v, reward_b, reward_m = filter_batch(batch, PERCENTILE)
+	print("main: from filter_batch ", "obs_v: ", obs_v, "\n")
+	time.sleep(2)
+
 	optimizer.zero_grad()
+
+	# run the network
+	print("main: run the network\n")
 	action_scores_v = net(obs_v)
+
+	# calculate cross entropy loss
 	loss_v = objective(action_scores_v, acts_v)
 	loss_v.backward()
+
 	optimizer.step()
 
 	# explanations
