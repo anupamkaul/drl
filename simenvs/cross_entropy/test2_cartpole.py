@@ -260,7 +260,7 @@ for iter_no, batch in enumerate(iterate_batches(env, net, BATCH_SIZE)):
 
 	if reward_m > 199:
 		print("RL Solved !!\n")
-		break
+		#break
 
 	writer.close()
 
