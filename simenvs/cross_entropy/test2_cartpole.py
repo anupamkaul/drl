@@ -35,11 +35,10 @@ randomly, as the method is robust and converges very quickly.
 
 '''
 # https://gymnasium.farama.org/environments/classic_control/cart_pole/
-
 env = gym.make("CartPole-v1", render_mode="human")
-#env = gym.wrappers.Monitor(env, "recording")
 
-observation, info = env.reset(seed=42)
+#env = gym.wrappers.Monitor(env, "recording")
+# observation, info = env.reset(seed=42)
 
 HIDDEN_SIZE = 128 # single layer count of neurons
 BATCH_SIZE  = 16  # count of episodes we play on every iteration``
@@ -58,9 +57,6 @@ class Net (nn.Module):
 	def forward(self, x):
 
 		print("net debug: incoming is len: ", len(x), "data: ", x)
-		x = x.view(x.size(0), -1)
-		print("net debug: incoming is len: ", len(x), "data: ", x)
-
 		return self.net(x)
 
 '''
@@ -93,6 +89,7 @@ Now let's define a function that generates batches with episodes
 '''
 
 def iterate_batches(env, net, batch_size):
+
 	batch = []
 	episode_reward = 0.0
 	episode_steps = []
@@ -118,8 +115,8 @@ def iterate_batches(env, net, batch_size):
 
 	while True:
 		obs_v = torch.FloatTensor([obs])
-		act_probs_v = sm(net(obs_v))     #apply softmax to the neural network (agent) that takes in 1 observation
-		act_probs = act_probs_v.data.numpy()[0] #how will act_probs probability dist be the one that is 'set' by Net?
+		act_probs_v = sm(net(obs_v))     # get action from the action probability density from Net...
+		act_probs = act_probs_v.data.numpy()[0] 
 		print ("iterate_batches", " action probability: ", act_probs, "\n")
 	
 		# explanation of above
@@ -146,7 +143,7 @@ def iterate_batches(env, net, batch_size):
 			batch.append(Episode(reward=episode_reward, steps = episode_steps))	
 			episode_reward = 0.0
 			episode_steps = []
-			next_obs = env.reset()
+			next_obs, next_info  = env.reset(seed=42)
 
 			#exit loop
 			if len(batch) == batch_size:
@@ -154,7 +151,8 @@ def iterate_batches(env, net, batch_size):
 
 				batch = []
 				steps = 0
-				obs = next_obs
+
+		obs = next_obs
 
 
 def filter_batch(batch, percentile):
@@ -178,19 +176,22 @@ def filter_batch(batch, percentile):
 		if example.reward < reward_bound:
 			continue
 
-		# and construct training data with elite episodes
-		train_obs.extend(map(lambda step: step.action, example.steps))
+		# and construct training data (recorded observations and actions) with elite episodes
+		train_obs.extend(map(lambda step: step.observation, example.steps))
+		train_act.extend(map(lambda step: step.action, example.steps))
 
 		#explanations
 
 	# print the elite training set (debug)
-	print("filtered training data (raw): ", "len: ", len(train_obs), "data: ", train_obs, "\n")
+	print("filtered training data (observations, raw): ", "len: ", len(train_obs), "data: ", train_obs, "\n")
+	print("filtered training data (actions, raw): ", "len: ", len(train_act), "data: ", train_act, "\n")
 
 	import torch
 	train_obs_v = torch.FloatTensor(train_obs)
 	train_act_v = torch.LongTensor(train_act)
 
-	print("filtered training data (vector): ", train_obs_v, "\n")
+	print("filtered training data (obs, vector): ", train_obs_v, "\n")
+	print("filtered training data (act, vector): ", train_act_v, "\n")
 	return train_obs_v, train_act_v, reward_bound, reward_mean
 
 # main glue (continues from top)
@@ -235,12 +236,10 @@ for iter_no, batch in enumerate(iterate_batches(env, net, BATCH_SIZE)):
 
 	# run the network
 	print("main: run the network\n")
-
-	# bad hack: re-orient the network, is it even the same (because it needs to stabilize/gets passed)
-	net = Net(1, len(obs_v), n_actions)
-
 	action_scores_v = net(obs_v)
+
 	print("From network run, action_scores_v len: ", len(action_scores_v), "data: ", action_scores_v)
+	print("acts_v len: ", len(acts_v), "data: ", acts_v)
 
 	# calculate cross entropy loss
 	loss_v = objective(action_scores_v, acts_v)
@@ -251,6 +250,8 @@ for iter_no, batch in enumerate(iterate_batches(env, net, BATCH_SIZE)):
 	# explanations
 
 	print("%d: loss=%.3f, reward_mean=%.1f, reward_bound=%.1f" % (iter_no, loss_v.item(), reward_m, reward_b))
+	time.sleep(5) # is reward_mean increasing? (that shows convergence)
+
 	writer.add_scalar("loss", loss_v.item(), iter_no)
 	writer.add_scalar("reward_bound", reward_b, iter_no)
 	writer.add_scalar("reward_mean",  reward_m, iter_no)
