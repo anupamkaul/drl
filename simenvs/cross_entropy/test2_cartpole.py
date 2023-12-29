@@ -56,7 +56,7 @@ class Net (nn.Module):
 		)
 	def forward(self, x):
 
-		print("net debug: incoming is len: ", len(x), "data: ", x)
+		#print("net debug: incoming is len: ", len(x), "data: ", x)
 		return self.net(x)
 
 '''
@@ -117,28 +117,28 @@ def iterate_batches(env, net, batch_size):
 		obs_v = torch.FloatTensor([obs])
 		act_probs_v = sm(net(obs_v))     # get action from the action probability density from Net...
 		act_probs = act_probs_v.data.numpy()[0] 
-		print ("iterate_batches", " action probability: ", act_probs, "\n")
+		#print ("iterate_batches", " action probability: ", act_probs, "\n")
 	
 		# explanation of above
 
 		action = np.random.choice(len(act_probs), p = act_probs)
-		print ("iterate_batches", " action: ", action, "\n")
+		#print ("iterate_batches", " action: ", action, "\n")
 
 		next_obs, reward, is_done, truncated, info = env.step(action)
-		print ("iterate_batches", " observation ", next_obs, "reward ", reward)
+		#print ("iterate_batches", " observation ", next_obs, "reward ", reward)
 		steps = steps + 1
 
 		# write some more
 
 		episode_reward += reward
-		print ("iterate_batches", " episode_reward: ", episode_reward, "\n")
+		#print ("iterate_batches", " episode_reward: ", episode_reward, "\n")
 		episode_steps.append(EpisodeStep(observation=obs, action=action))
 
 		if is_done:
 
-			print("iterate_batches", "episode ", len(batch) + 1, " TERMINATED (after ", steps, "steps)")
-			print("batch up this episode..\n")
-			time.sleep(2)
+			#print("iterate_batches", "episode ", len(batch) + 1, " TERMINATED (after ", steps, "steps)")
+			#print("batch up this episode..\n")
+			#time.sleep(2)
 
 			batch.append(Episode(reward=episode_reward, steps = episode_steps))	
 			episode_reward = 0.0
@@ -161,9 +161,9 @@ def filter_batch(batch, percentile):
 	reward_bound = np.percentile(rewards, percentile)
 	reward_mean = float(np.mean(rewards))
 
-	print("filter_batch ", "rewards: ", rewards, "\n")
-	print("filter_batch ", "reward_bound: ", reward_bound, "(this is the ", PERCENTILE, "th percentile)\n")
-	print("filter_batch ", "reward_mean: ", reward_mean, "\n")
+	#print("filter_batch ", "rewards: ", rewards, "\n")
+	#print("filter_batch ", "reward_bound: ", reward_bound, "(this is the ", PERCENTILE, "th percentile)\n")
+	#print("filter_batch ", "reward_mean: ", reward_mean, "\n")
 
 	#explanations galore!
 
@@ -183,15 +183,15 @@ def filter_batch(batch, percentile):
 		#explanations
 
 	# print the elite training set (debug)
-	print("filtered training data (observations, raw): ", "len: ", len(train_obs), "data: ", train_obs, "\n")
-	print("filtered training data (actions, raw): ", "len: ", len(train_act), "data: ", train_act, "\n")
+	#print("filtered training data (observations, raw): ", "len: ", len(train_obs), "data: ", train_obs, "\n")
+	#print("filtered training data (actions, raw): ", "len: ", len(train_act), "data: ", train_act, "\n")
 
 	import torch
 	train_obs_v = torch.FloatTensor(train_obs)
 	train_act_v = torch.LongTensor(train_act)
 
-	print("filtered training data (obs, vector): ", train_obs_v, "\n")
-	print("filtered training data (act, vector): ", train_act_v, "\n")
+	#print("filtered training data (obs, vector): ", train_obs_v, "\n")
+	#print("filtered training data (act, vector): ", train_act_v, "\n")
 	return train_obs_v, train_act_v, reward_bound, reward_mean
 
 # main glue (continues from top)
@@ -225,21 +225,21 @@ to indicate the RL problem has been solved
 
 for iter_no, batch in enumerate(iterate_batches(env, net, BATCH_SIZE)):
 
-	print("main: from iterate_batches ", "iter_no: ", iter_no, "batch: ", batch, "\n")
-	time.sleep(2)
+	#print("main: from iterate_batches ", "iter_no: ", iter_no, "batch: ", batch, "\n")
+	#time.sleep(2)
 
 	obs_v, acts_v, reward_b, reward_m = filter_batch(batch, PERCENTILE)
-	print("main: from filter_batch ", "obs_v: ", obs_v, "\n")
-	time.sleep(2)
+	#print("main: from filter_batch ", "obs_v: ", obs_v, "\n")
+	#time.sleep(2)
 
 	optimizer.zero_grad()
 
 	# run the network
-	print("main: run the network\n")
+	#print("main: run the network\n")
 	action_scores_v = net(obs_v)
 
-	print("From network run, action_scores_v len: ", len(action_scores_v), "data: ", action_scores_v)
-	print("acts_v len: ", len(acts_v), "data: ", acts_v)
+	#print("From network run, action_scores_v len: ", len(action_scores_v), "data: ", action_scores_v)
+	#print("acts_v len: ", len(acts_v), "data: ", acts_v)
 
 	# calculate cross entropy loss
 	loss_v = objective(action_scores_v, acts_v)
