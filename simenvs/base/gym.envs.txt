@@ -1,0 +1,55 @@
+.//registration.py:468:            "that `gym.make` with the unversioned environment will return the latest versioned environment"
+.//toy_text/cliffwalking.py:81:    gym.make('CliffWalking-v0')
+.//toy_text/cliffwalking.py:199:                f'e.g. gym.make("{self.spec.id}", render_mode="rgb_array")'
+.//toy_text/taxi.py:140:    gym.make('Taxi-v3')
+.//toy_text/taxi.py:317:                f'e.g. gym.make("{self.spec.id}", render_mode="rgb_array")'
+.//toy_text/frozen_lake.py:156:    gym.make('FrozenLake-v1', desc=None, map_name="4x4", is_slippery=True)
+.//toy_text/frozen_lake.py:170:    gym.make('FrozenLake-v1', desc=generate_random_map(size=8))
+.//toy_text/frozen_lake.py:331:                f'e.g. gym.make("{self.spec.id}", render_mode="rgb_array")'
+.//toy_text/blackjack.py:126:    gym.make('Blackjack-v1', natural=False, sab=False)
+.//toy_text/blackjack.py:232:                f'e.g. gym.make("{self.spec.id}", render_mode="rgb_array")'
+.//tabular/cliffwalking.py:120:    gym.make('tablular/CliffWalking-v0')
+.//tabular/blackjack.py:209:    gym.make('Jax-Blackjack-v0', natural=False, sutton_and_barto=False)
+.//mujoco/reacher_v4.py:109:    env = gym.make('Reacher-v4')
+.//mujoco/half_cheetah_v4.py:110:    env = gym.make('HalfCheetah-v2')
+.//mujoco/half_cheetah_v4.py:117:    env = gym.make('HalfCheetah-v4', ctrl_cost_weight=0.1, ....)
+.//mujoco/walker2d_v4.py:117:    env = gym.make('Walker2d-v4')
+.//mujoco/walker2d_v4.py:124:    env = gym.make('Walker2d-v4', ctrl_cost_weight=0.1, ....)
+.//mujoco/pusher_v4.py:123:    env = gym.make('Pusher-v4')
+.//mujoco/pusher_v4.py:131:    env = gym.make('Pusher-v2')
+.//mujoco/hopper_v4.py:112:    env = gym.make('Hopper-v2')
+.//mujoco/hopper_v4.py:119:    env = gym.make('Hopper-v4', ctrl_cost_weight=0.1, ....)
+.//mujoco/inverted_double_pendulum_v4.py:108:    env = gym.make('InvertedDoublePendulum-v4')
+.//mujoco/inverted_double_pendulum_v4.py:115:    env = gym.make('InvertedDoublePendulum-v2')
+.//mujoco/inverted_pendulum_v4.py:78:    env = gym.make('InvertedPendulum-v4')
+.//mujoco/inverted_pendulum_v4.py:84:    env = gym.make('InvertedPendulum-v2')
+.//mujoco/mujoco_env.py:264:                f'e.g. gym.make("{self.spec.id}", render_mode="rgb_array")'
+.//mujoco/ant_v4.py:170:    env = gym.make('Ant-v2')
+.//mujoco/ant_v4.py:177:    env = gym.make('Ant-v4', ctrl_cost_weight=0.1, ...)
+.//mujoco/swimmer_v4.py:100:    gym.make('Swimmer-v4')
+.//mujoco/swimmer_v4.py:107:    env = gym.make('Swimmer-v4', ctrl_cost_weight=0.1, ....)
+.//mujoco/humanoidstandup_v4.py:227:    env = gym.make('HumanoidStandup-v4')
+.//mujoco/humanoidstandup_v4.py:235:    env = gym.make('HumanoidStandup-v2')
+.//mujoco/humanoid_v4.py:235:    env = gym.make('Humanoid-v4')
+.//mujoco/humanoid_v4.py:242:    env = gym.make('Humanoid-v4', ctrl_cost_weight=0.1, ....)
+.//classic_control/continuous_mountain_car.py:96:    gym.make('MountainCarContinuous-v0')
+.//classic_control/continuous_mountain_car.py:200:                f'e.g. gym.make("{self.spec.id}", render_mode="rgb_array")'
+.//classic_control/cartpole.py:79:    gym.make('CartPole-v1')
+.//classic_control/cartpole.py:218:                f'e.g. gym.make("{self.spec.id}", render_mode="rgb_array")'
+.//classic_control/mountain_car.py:88:    gym.make('MountainCar-v0')
+.//classic_control/mountain_car.py:176:                f'e.g. gym.make("{self.spec.id}", render_mode="rgb_array")'
+.//classic_control/acrobot.py:103:    env = gym.make('Acrobot-v1')
+.//classic_control/acrobot.py:290:                f'e.g. gym.make("{self.spec.id}", render_mode="rgb_array")'
+.//classic_control/pendulum.py:82:    gym.make('Pendulum-v1', g=9.81)
+.//classic_control/pendulum.py:176:                f'e.g. gym.make("{self.spec.id}", render_mode="rgb_array")'
+.//box2d/car_racing.py:172:    env = gym.make("CarRacing-v1", domain_randomize=True)
+.//box2d/car_racing.py:585:                f'e.g. gym.make("{self.spec.id}", render_mode="rgb_array")'
+.//box2d/bipedal_walker.py:149:    env = gym.make("BipedalWalker-v3", hardcore=True)
+.//box2d/bipedal_walker.py:617:                f'e.g. gym.make("{self.spec.id}", render_mode="rgb_array")'
+.//box2d/bipedal_walker.py:775:            "To use this environment, instead create it by specifying the hardcore keyword in gym.make, i.e.\n"
+.//box2d/bipedal_walker.py:776:            'gym.make("BipedalWalker-v3", hardcore=True)'
+.//box2d/lunar_lander.py:152:    env = gym.make(
+.//box2d/lunar_lander.py:684:                f'e.g. gym.make("{self.spec.id}", render_mode="rgb_array")'
+.//box2d/lunar_lander.py:887:            "To use this environment, instead create it by specifying the continuous keyword in gym.make, i.e.\n"
+.//box2d/lunar_lander.py:888:            'gym.make("LunarLander-v2", continuous=True)'
+.//box2d/lunar_lander.py:893:    env = gym.make("LunarLander-v2", render_mode="rgb_array")
