@@ -43,7 +43,7 @@ for var_name in optimizer.state_dict():
 
 # saving and loading the model for inference:
 
-# save:
+# save, using state_dict:
 PATH = "./models/mymodel"
 
 import torch
@@ -64,10 +64,24 @@ print("Model's state_dict:")
 for param_tensor in modelnew.state_dict():
     print(param_tensor, "\t", modelnew.state_dict()[param_tensor].size())
 
-'''
 # Print optimizer's state_dict
 print("Optimizer's state_dict:")
 for var_name in optimizer.state_dict():
     print(var_name, "\t", optimizer.state_dict()[var_name])
-'''
+
+print("\nfull model details: ", modelnew) 
+
+# ----------------------------------
+
+# save full model
+PATH_FULLMODEL = "./models/mymodelfull"
+
+torch.save(model, PATH_FULLMODEL)
+print("Full Model saved to ", PATH_FULLMODEL)
+
+print("Full Model Loaded from ", PATH_FULLMODEL, "\n")
+modelfull = TheModelClass()
+modelfull = torch.load(PATH_FULLMODEL)
+modelfull.eval()
+print(modelfull)
 
