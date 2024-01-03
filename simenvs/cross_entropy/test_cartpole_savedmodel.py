@@ -194,6 +194,18 @@ def filter_batch(batch, percentile):
 	#print("filtered training data (act, vector): ", train_act_v, "\n")
 	return train_obs_v, train_act_v, reward_bound, reward_mean
 
+import torch
+PATH="./model/cartpole_crossentropy"
+
+def save_model(net):
+	# check for existence(net), corner cases
+	print("saving model\n")
+	torch.save(net, PATH)
+
+def load_model():
+	# check for existence (PATH), corner cases
+	return torch.load(PATH)
+
 # save model upon a SIGINT (control-C)
 import signal
 
@@ -204,11 +216,14 @@ for i in valid_signals:
 	print(i)
 '''
 
+# define my signal handler
 def SignalHandler_SIGINT(SignalNumber, Frame):
 	print("\nSignal Handler: CTRL-C was pressed!!\n")
 	print ("save current model\n")
+	save_model(net)
 	exit()
 
+# register my signal handler
 signal.signal(signal.SIGINT,SignalHandler_SIGINT) 
 
 # main glue (continues from top)
