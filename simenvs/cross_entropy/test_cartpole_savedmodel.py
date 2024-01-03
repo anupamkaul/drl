@@ -199,7 +199,7 @@ PATH="./model/cartpole_crossentropy"
 
 def save_model(net):
 	# check for existence(net), corner cases
-	print("saving model\n")
+	print("\nsaving model")
 	torch.save(net, PATH)
 
 def load_model():
@@ -218,8 +218,8 @@ for i in valid_signals:
 
 # define my signal handler
 def SignalHandler_SIGINT(SignalNumber, Frame):
-	print("\nSignal Handler: CTRL-C was pressed!!\n")
-	print ("save current model\n")
+	#print("\nSignal Handler: CTRL-C was pressed!!\n")
+	#print ("save current model\n")
 	save_model(net)
 	exit()
 
