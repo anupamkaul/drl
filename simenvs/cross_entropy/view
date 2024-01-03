@@ -10,3 +10,53 @@ NOTE: Using experimental fast data loading logic. To disable, pass
 
 Serving TensorBoard on localhost; to expose to the network, use a proxy or pass --bind_all
 TensorBoard 2.15.1 at http://localhost:6006/ (Press CTRL+C to quit)
+
+--> Proof of saving and re-using torch models with cartpole:
+
+python3 test_cartpole_savedmodel.py 
+/Users/anupkaul/akaul_git/drl/simenvs/cross_entropy/test_cartpole_savedmodel.py:117: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/utils/tensor_new.cpp:264.)
+  obs_v = torch.FloatTensor([obs])
+0: loss=0.669, reward_mean=26.8, reward_bound=27.5
+1: loss=0.667, reward_mean=33.4, reward_bound=40.5
+2: loss=0.653, reward_mean=42.8, reward_bound=40.0
+3: loss=0.651, reward_mean=31.2, reward_bound=37.5
+^C
+Signal Handler: CTRL-C was pressed!!
+
+save current model
+
+saving model
+
+anupkaul@147dda4c0851 cross_entropy % python3 test_cartpole_savedmodel.py
+/Users/anupkaul/akaul_git/drl/simenvs/cross_entropy/test_cartpole_savedmodel.py:117: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/utils/tensor_new.cpp:264.)
+  obs_v = torch.FloatTensor([obs])
+0: loss=0.644, reward_mean=45.5, reward_bound=46.5
+1: loss=0.634, reward_mean=48.4, reward_bound=63.0
+2: loss=0.645, reward_mean=40.9, reward_bound=45.0
+3: loss=0.629, reward_mean=35.2, reward_bound=42.5
+4: loss=0.618, reward_mean=37.8, reward_bound=36.5
+5: loss=0.652, reward_mean=47.0, reward_bound=53.0
+6: loss=0.623, reward_mean=46.6, reward_bound=50.0
+7: loss=0.613, reward_mean=57.3, reward_bound=63.5
+8: loss=0.611, reward_mean=49.8, reward_bound=58.0
+9: loss=0.625, reward_mean=60.1, reward_bound=73.5
+^C
+Signal Handler: CTRL-C was pressed!!
+
+save current model
+
+saving model
+
+anupkaul@147dda4c0851 cross_entropy % python3 test_cartpole_savedmodel.py
+/Users/anupkaul/akaul_git/drl/simenvs/cross_entropy/test_cartpole_savedmodel.py:117: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/utils/tensor_new.cpp:264.)
+  obs_v = torch.FloatTensor([obs])
+0: loss=0.604, reward_mean=70.1, reward_bound=72.5
+^C
+Signal Handler: CTRL-C was pressed!!
+
+save current model
+
+saving model
+
+anupkaul@147dda4c0851 cross_entropy % 
+
