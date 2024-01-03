@@ -1,6 +1,6 @@
 import gymnasium as gym
 
-# https://gymnasium.farama.org/environments/mujoco/humanoid_standup/
+# https://gymnasium.farama.org/environments/toy_text/frozen_lake/
 
 # -- play with environments (look at source of env in gymnasium to learn more)
 
