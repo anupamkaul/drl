@@ -42,8 +42,30 @@ randomly, as the method is robust and converges very quickly.
 #env = gym.make("FrozenLake", map_name="8x8", is_slippery=False, render_mode="human") # non-slippery mode
 #env = gym.make("FrozenLake", desc = None , map_name="8x8",  is_slippery=False, render_mode="human") # generate a random map each time
 
+'''
+Since we're borrowing from cartpole's cross entropy model and that was based on vectorized observations, and
+because frozen-lake's observation is a single int (range 0-15), we will write a wrapper for observations.
+We can apply the traditional "one-hot encoding" of discrete inputs, which means that input to our network
+will have 16 float numbers and zero everywhere, except the index that we will encode. To minimize code changes,
+we will use the ObservationWrapper class from Gymnasium and implement our DiscreteOneHotWrapper class. (Also
+look at base/cartpole_wrapper.py for an action-wrapper example)
+'''
+
+class DiscreteOneHotWrapper(gym.ObservationWrapper):
+	def __init__(self, env):
+		super(DiscreteOneHotWrapper, self).__init__(env)
+		assert isinstance(env.observation_space, gym.spaces.Discrete)
+		self.observation_space = gym.spaces.Box(0.0, 1.0, (env.observation_space.n, ), dtype=np.float32)
+
+	def observation(self, observation):
+		res = np.copy(self.observation_space.low)
+		res[observation] = 1.0
+		return res
+
 from gymnasium.envs.toy_text.frozen_lake import generate_random_map
-env = gym.make("FrozenLake", desc = generate_random_map(8), map_name="8x8",  is_slippery=False, render_mode="human") # generate a random map each time
+#env = gym.make("FrozenLake", desc = generate_random_map(8), map_name="8x8",  is_slippery=False, render_mode="human") # generate a random map each time
+
+env = DiscreteOneHotWrapper(gym.make("FrozenLake", desc = generate_random_map(8), map_name="8x8",  is_slippery=False, render_mode="human")) # generate a random map each time
 
 #env = gym.wrappers.Monitor(env, "recording")
 # observation, info = env.reset(seed=42)
@@ -209,6 +231,8 @@ def filter_batch(batch, percentile):
 # current_row * nrows + current_col (where both the row and col start at 0)
 
 # so the following call fails: we need a vector for observations (1X16) to re-use this code
+# https://gymnasium.farama.org/api/wrappers/observation_wrappers/#
+
 obs_size = env.observation_space.shape[0]
 n_actions = env.action_space.n
 
