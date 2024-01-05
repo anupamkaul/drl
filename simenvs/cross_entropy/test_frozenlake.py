@@ -71,7 +71,7 @@ env = DiscreteOneHotWrapper(gym.make("FrozenLake-v1", desc = generate_random_map
 # observation, info = env.reset(seed=42)
 
 HIDDEN_SIZE = 128 # single layer count of neurons
-BATCH_SIZE  = 100 # count of episodes we play on every iteration``
+BATCH_SIZE  = 16  # count of episodes we play on every iteration
 PERCENTILE  = 70  # percentile of episodes' total rewards that we use for elite episode filtering 
                   # we take 70th percentile => we will leave top 30% of episodes sorted by reward
 
@@ -219,8 +219,8 @@ def filter_batch(batch, percentile):
 	#print("filtered training data (actions, raw): ", "len: ", len(train_act), "data: ", train_act, "\n")
 
 	import torch
-	train_obs_v = torch.FloatTensor(train_obs)
-	train_act_v = torch.LongTensor(train_act)
+	train_obs_v = torch.FloatTensor(np.array(train_obs))
+	train_act_v = torch.LongTensor(np.array(train_act))
 
 	#print("filtered training data (obs, vector): ", train_obs_v, "\n")
 	#print("filtered training data (act, vector): ", train_act_v, "\n")
