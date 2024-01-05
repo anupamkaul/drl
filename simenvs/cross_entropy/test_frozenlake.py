@@ -65,13 +65,13 @@ class DiscreteOneHotWrapper(gym.ObservationWrapper):
 from gymnasium.envs.toy_text.frozen_lake import generate_random_map
 #env = gym.make("FrozenLake", desc = generate_random_map(8), map_name="8x8",  is_slippery=False, render_mode="human") # generate a random map each time
 
-env = DiscreteOneHotWrapper(gym.make("FrozenLake", desc = generate_random_map(8), map_name="8x8",  is_slippery=False, render_mode="human")) # generate a random map each time
+env = DiscreteOneHotWrapper(gym.make("FrozenLake-v1", desc = generate_random_map(8), map_name="8x8",  is_slippery=False, render_mode="human")) # generate a random map each time
 
 #env = gym.wrappers.Monitor(env, "recording")
 # observation, info = env.reset(seed=42)
 
 HIDDEN_SIZE = 128 # single layer count of neurons
-BATCH_SIZE  = 16  # count of episodes we play on every iteration``
+BATCH_SIZE  = 100 # count of episodes we play on every iteration``
 PERCENTILE  = 70  # percentile of episodes' total rewards that we use for elite episode filtering 
                   # we take 70th percentile => we will leave top 30% of episodes sorted by reward
 
@@ -144,7 +144,9 @@ def iterate_batches(env, net, batch_size):
 	import time
 
 	while True:
-		obs_v = torch.FloatTensor([obs])
+		#obs_v = torch.FloatTensor([obs])
+		obs_v = torch.FloatTensor(np.array([obs]))
+		#print(obs_v)
 		act_probs_v = sm(net(obs_v))     # get action from the action probability density from Net...
 		act_probs = act_probs_v.data.numpy()[0] 
 		#print ("iterate_batches", " action probability: ", act_probs, "\n")

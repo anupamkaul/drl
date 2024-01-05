@@ -114,7 +114,8 @@ def iterate_batches(env, net, batch_size):
 	import time
 
 	while True:
-		obs_v = torch.FloatTensor([obs])
+		#obs_v = torch.FloatTensor([obs])
+		obs_v = torch.FloatTensor(np.array([obs]))
 		act_probs_v = sm(net(obs_v))     # get action from the action probability density from Net...
 		act_probs = act_probs_v.data.numpy()[0] 
 		#print ("iterate_batches", " action probability: ", act_probs, "\n")
@@ -187,8 +188,8 @@ def filter_batch(batch, percentile):
 	#print("filtered training data (actions, raw): ", "len: ", len(train_act), "data: ", train_act, "\n")
 
 	import torch
-	train_obs_v = torch.FloatTensor(train_obs)
-	train_act_v = torch.LongTensor(train_act)
+	train_obs_v = torch.FloatTensor(np.array(train_obs))
+	train_act_v = torch.LongTensor(np.array(train_act))
 
 	#print("filtered training data (obs, vector): ", train_obs_v, "\n")
 	#print("filtered training data (act, vector): ", train_act_v, "\n")
