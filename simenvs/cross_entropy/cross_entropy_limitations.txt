@@ -1,0 +1,29 @@
+Limitations (as evidenced from frozen_lake which doesn't show convergence)
+
+1. For training, episodes have to be finite and preferably short
+2. Total reward for episodes should have enough variability to separate good episodes from bad ones 
+3. There is no immediate indication about whether the agent has succeeded or failed (this is a characteristic of frozen lake, or "policy")
+
+i.e. good episodes are rare so the strategy will be to increase/gain time, retain the best for longer periods, and 
+model rewards to map more to the length and quality of episodes.
+
+To solve frozen lake based on these limitations and still using cross entropy:
+
+1. Larger batches of played episodes (move from 16 to 100)
+
+2. Discount factor applied to reward: To make the total reward for the episode depend on the episode length,
+and to add variety in episodes, we can use a discounted total reward with a discount factor 0.9 or 0.95. In
+this case the reward for shorter episodes will be higher than the reward for longer ones.
+
+3. Keeping 'elite' episodes for a longer time. In Cartpole training, we sampled episodes from the env, trained
+on the best ones, and then threw the elite episodes away. In Frozen Lake, successful episodes are rarer animals,
+so we need to keep them for several iterations to train on them.
+
+4. Decrease learning rate: This will give our network time to average more training samples.
+
+5. Much longer training time: Due to sparsity of successful episodes, and the random outcome of actions (more for
+the "slippery" versions of the env where prob is 33% for an action) it is much harder for our network to get an idea
+of the best behavior to perform in any particular situation. To reach 50% successful episodes, about 5k training
+iterations are required (I will also be saving intermediately trained models and re-load them to gain time)
+
+
