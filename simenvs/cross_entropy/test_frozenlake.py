@@ -177,6 +177,7 @@ def iterate_batches(env, net, batch_size):
 			episode_reward = 0.0
 			episode_steps = []
 			next_obs, next_info  = env.reset(seed=42)
+			steps = 0
 
 			#exit loop
 			if len(batch) == batch_size:
