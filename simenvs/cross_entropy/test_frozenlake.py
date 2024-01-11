@@ -169,7 +169,7 @@ def iterate_batches(env, net, batch_size):
 
 		if is_done:
 
-			#print("iterate_batches", "episode ", len(batch) + 1, " TERMINATED (after ", steps, "steps)")
+			print("\riterate_batches", "episode ", len(batch) + 1, " TERMINATED (after ", steps, "steps)", end = ' ', flush=True)
 			#print("batch up this episode..\n")
 			#time.sleep(2)
 
@@ -204,6 +204,7 @@ def filter_batch(batch, percentile):
 
 	train_obs = []
 	train_act = []
+	elite_batch = []
 
 	for example, discounted_reward in zip(batch, discounted_rewards):
 
@@ -291,7 +292,7 @@ for iter_no, batch in enumerate(iterate_batches(env, net, BATCH_SIZE)):
 
 	# explanations
 
-	print("%d: loss=%.3f, reward_mean=%.1f, reward_bound=%.1f" % (iter_no, loss_v.item(), reward_m, reward_b))
+	print("%d: loss=%.3f, reward_mean=%.1f, reward_bound=%.1f" % (iter_no, loss_v.item(), reward_mean, reward_bound))
 	time.sleep(5) # is reward_mean increasing? (that shows convergence)
 
 	writer.add_scalar("loss", loss_v.item(), iter_no)
