@@ -189,9 +189,11 @@ def iterate_batches(env, net, batch_size):
 
 def filter_batch(batch, percentile):
 
-	rewards = list(map(lambda s: s.reward, batch))
-	reward_bound = np.percentile(rewards, percentile)
-	reward_mean = float(np.mean(rewards))
+	#rewards = list(map(lambda s: s.reward, batch))
+	discounted_rewards = list(map(lambda s: s.reward * (GAMMA ** len(s.steps)), batch))
+	reward_bound = np.percentile(discounted_rewards, percentile)
+
+	#reward_mean = float(np.mean(rewards)) (handled in main loop now)
 
 	#print("filter_batch ", "rewards: ", rewards, "\n")
 	#print("filter_batch ", "reward_bound: ", reward_bound, "(this is the ", PERCENTILE, "th percentile)\n")
@@ -202,29 +204,15 @@ def filter_batch(batch, percentile):
 	train_obs = []
 	train_act = []
 
-	for example in batch:
+	for example, discounted_reward in zip(batch, discounted_rewards):
 
-		# throw away less desirable examples from episodes
-		if example.reward < reward_bound:
-			continue
+		if discounted_reward < reward_bound:
+			train_obs.extend(map(lambda step: step.observation, example.steps))
+			train_act.extend(map(lambda step: step.action, example.steps))
+			elite_batch.append(example)
 
-		# and construct training data (recorded observations and actions) with elite episodes
-		train_obs.extend(map(lambda step: step.observation, example.steps))
-		train_act.extend(map(lambda step: step.action, example.steps))
-
-		#explanations
-
-	# print the elite training set (debug)
-	#print("filtered training data (observations, raw): ", "len: ", len(train_obs), "data: ", train_obs, "\n")
-	#print("filtered training data (actions, raw): ", "len: ", len(train_act), "data: ", train_act, "\n")
-
-	import torch
-	train_obs_v = torch.FloatTensor(np.array(train_obs))
-	train_act_v = torch.LongTensor(np.array(train_act))
-
-	#print("filtered training data (obs, vector): ", train_obs_v, "\n")
-	#print("filtered training data (act, vector): ", train_act_v, "\n")
-	return train_obs_v, train_act_v, reward_bound, reward_mean
+	# vectorization in main loop now
+	return elite_batch, train_obs, train_act, reward_bound
 
 # main glue (continues from top)
 
@@ -262,12 +250,25 @@ as many times until we're satisfied that mean_rewards is now a good number
 to indicate the RL problem has been solved
 '''
 
+full_batch = []
 for iter_no, batch in enumerate(iterate_batches(env, net, BATCH_SIZE)):
 
 	#print("main: from iterate_batches ", "iter_no: ", iter_no, "batch: ", batch, "\n")
 	#time.sleep(2)
 
-	obs_v, acts_v, reward_b, reward_m = filter_batch(batch, PERCENTILE)
+	reward_mean = float(np.mean(list(map(lambda s: s.reward, batch))))
+
+	#obs_v, acts_v, reward_b, reward_m = filter_batch(full_batch + batch, PERCENTILE)
+	full_batch, obs, acts, reward_bound = filter_batch(full_batch + batch, PERCENTILE)
+
+	if not full_batch:
+		continue
+
+	import torch
+	obs_v = torch.FloatTensor(obs)
+	acts_v = torch.LongTensor(acts)
+	full_batch = full_batch[-500:]
+
 	#print("main: from filter_batch ", "obs_v: ", obs_v, "\n")
 	#time.sleep(2)
 
@@ -292,12 +293,12 @@ for iter_no, batch in enumerate(iterate_batches(env, net, BATCH_SIZE)):
 	time.sleep(5) # is reward_mean increasing? (that shows convergence)
 
 	writer.add_scalar("loss", loss_v.item(), iter_no)
-	writer.add_scalar("reward_bound", reward_b, iter_no)
-	writer.add_scalar("reward_mean",  reward_m, iter_no)
+	writer.add_scalar("reward_bound", reward_bound, iter_no)
+	writer.add_scalar("reward_mean",  reward_mean, iter_no)
 
 	# explanations
 
-	if reward_m > 199:
+	if reward_mean > 199:
 		print("RL Solved !!\n")
 		#break
 
