@@ -74,6 +74,7 @@ HIDDEN_SIZE = 128 # single layer count of neurons
 BATCH_SIZE  = 100 # count of episodes we play on every iteration
 PERCENTILE  = 70  # percentile of episodes' total rewards that we use for elite episode filtering 
                   # we take 70th percentile => we will leave top 30% of episodes sorted by reward
+GAMMA = 0.9
 
 # this is the agent now:
 class Net (nn.Module):
@@ -272,7 +273,8 @@ for iter_no, batch in enumerate(iterate_batches(env, net, BATCH_SIZE)):
 	#print("main: from filter_batch ", "obs_v: ", obs_v, "\n")
 	#time.sleep(2)
 
-	optimizer.zero_grad()
+	#optimizer.zero_grad()
+	optimizer = optim.Adam(params=net.parameters(), lr=0.001)
 
 	# run the network
 	#print("main: run the network\n")
