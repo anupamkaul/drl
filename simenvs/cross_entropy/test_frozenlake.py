@@ -217,6 +217,38 @@ def filter_batch(batch, percentile):
 	# vectorization in main loop now
 	return elite_batch, train_obs, train_act, reward_bound
 
+import torch
+PATH="./model/frozenlake_crossentropy"
+
+def save_model(net):
+	# check for existence(net), corner cases
+	print("\nsaving model")
+	torch.save(net, PATH)
+
+def load_model():
+	# check for existence (PATH), corner cases
+	return torch.load(PATH)
+
+# save model upon a SIGINT (control-C)
+import signal
+
+'''
+valid_signals = signal.valid_signals()
+print("Number of valid signals ", len(valid_signals), "\n")
+for i in valid_signals:
+	print(i)
+'''
+
+# define my signal handler
+def SignalHandler_SIGINT(SignalNumber, Frame):
+	#print("\nSignal Handler: CTRL-C was pressed!!\n")
+	#print ("save current model\n")
+	save_model(net)
+	exit()
+
+# register my signal handler
+signal.signal(signal.SIGINT,SignalHandler_SIGINT) 
+
 # main glue (continues from top)
 
 # frozen lake's observation is a single int 
@@ -234,6 +266,8 @@ n_actions = env.action_space.n
 # but because the sum total/flattened tensor then is different
 
 net = Net(obs_size, HIDDEN_SIZE, n_actions)
+net = load_model()
+
 objective = nn.CrossEntropyLoss()
 
 from torch import optim
