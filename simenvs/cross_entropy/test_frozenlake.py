@@ -191,17 +191,10 @@ def iterate_batches(env, net, batch_size):
 
 def filter_batch(batch, percentile):
 
-	#rewards = list(map(lambda s: s.reward, batch))
 	discounted_rewards = list(map(lambda s: s.reward * (GAMMA ** len(s.steps)), batch))
 	reward_bound = np.percentile(discounted_rewards, percentile)
 
-	#reward_mean = float(np.mean(rewards)) (handled in main loop now)
-
-	#print("filter_batch ", "rewards: ", rewards, "\n")
 	#print("filter_batch ", "reward_bound: ", reward_bound, "(this is the ", PERCENTILE, "th percentile)\n")
-	#print("filter_batch ", "reward_mean: ", reward_mean, "\n")
-
-	#explanations galore!
 
 	train_obs = []
 	train_act = []
@@ -209,7 +202,7 @@ def filter_batch(batch, percentile):
 
 	for example, discounted_reward in zip(batch, discounted_rewards):
 
-		if discounted_reward < reward_bound:
+		if discounted_reward > reward_bound:
 			train_obs.extend(map(lambda step: step.observation, example.steps))
 			train_act.extend(map(lambda step: step.action, example.steps))
 			elite_batch.append(example)
@@ -296,7 +289,6 @@ for iter_no, batch in enumerate(iterate_batches(env, net, BATCH_SIZE)):
 	reward_mean = float(np.mean(list(map(lambda s: s.reward, batch))))
 	print("mean reward: ", reward_mean, "\n")
 
-	#obs_v, acts_v, reward_b, reward_m = filter_batch(full_batch + batch, PERCENTILE)
 	full_batch, obs, acts, reward_bound = filter_batch(full_batch + batch, PERCENTILE)
 
 	if not full_batch:
