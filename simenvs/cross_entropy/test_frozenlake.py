@@ -294,11 +294,13 @@ for iter_no, batch in enumerate(iterate_batches(env, net, BATCH_SIZE)):
 	#time.sleep(2)
 
 	reward_mean = float(np.mean(list(map(lambda s: s.reward, batch))))
+	print("mean reward: ", reward_mean, "\n")
 
 	#obs_v, acts_v, reward_b, reward_m = filter_batch(full_batch + batch, PERCENTILE)
 	full_batch, obs, acts, reward_bound = filter_batch(full_batch + batch, PERCENTILE)
 
 	if not full_batch:
+		print("not full batch, skip and go back to iterate_batches\n")
 		continue
 
 	import torch
@@ -313,7 +315,7 @@ for iter_no, batch in enumerate(iterate_batches(env, net, BATCH_SIZE)):
 	optimizer = optim.Adam(params=net.parameters(), lr=0.001)
 
 	# run the network
-	#print("main: run the network\n")
+	print("main: run the network!\n")
 	action_scores_v = net(obs_v)
 
 	#print("From network run, action_scores_v len: ", len(action_scores_v), "data: ", action_scores_v)
