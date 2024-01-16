@@ -72,7 +72,7 @@ env = DiscreteOneHotWrapper(gym.make("FrozenLake-v1", desc = generate_random_map
 
 HIDDEN_SIZE = 128 # single layer count of neurons
 BATCH_SIZE  = 100 # count of episodes we play on every iteration
-PERCENTILE  = 70  # percentile of episodes' total rewards that we use for elite episode filtering 
+PERCENTILE  = 30  # percentile of episodes' total rewards that we use for elite episode filtering 
                   # we take 70th percentile => we will leave top 30% of episodes sorted by reward
 GAMMA = 0.9
 
@@ -164,16 +164,17 @@ def iterate_batches(env, net, batch_size):
 		# write some more
 
 		episode_reward += reward
-		#print ("iterate_batches", " episode_reward: ", episode_reward, "\n")
+		print ("\riterate_batches", " episode_reward: ", episode_reward, "\n", end=' ', flush=True)
 		episode_steps.append(EpisodeStep(observation=obs, action=action))
 
 		if is_done:
 
 			print("\riterate_batches", "episode ", len(batch) + 1, " TERMINATED (after ", steps, "steps)", end = ' ', flush=True)
 			#print("batch up this episode..\n")
-			#time.sleep(2)
+			time.sleep(1)
 
 			batch.append(Episode(reward=episode_reward, steps = episode_steps))	
+			#print("\rbatch: ", batch, "\n", end = ' ', flush=True)
 			episode_reward = 0.0
 			episode_steps = []
 			next_obs, next_info  = env.reset(seed=42)
@@ -182,7 +183,6 @@ def iterate_batches(env, net, batch_size):
 			#exit loop
 			if len(batch) == batch_size:
 				yield batch
-
 				batch = []
 				steps = 0
 
@@ -202,7 +202,7 @@ def filter_batch(batch, percentile):
 
 	for example, discounted_reward in zip(batch, discounted_rewards):
 
-		print("\rfiter_batch: discounted_reward: ", discounted_reward, "reward_bound: ", reward_bound, "\n"); 
+		print("\rfiter_batch: discounted_reward: ", discounted_reward, "reward_bound: ", reward_bound, "\n", end=' ', flush=True); 
 
 		if discounted_reward > reward_bound:
 			train_obs.extend(map(lambda step: step.observation, example.steps))
