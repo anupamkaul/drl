@@ -4,13 +4,13 @@ import gymnasium as gym
 
 # -- play with environments (look at source of env in gymnasium to learn more)
 
-#env = gym.make("FrozenLake", render_mode="human") # default map_name = 4x4, is_slippery=True
+env = gym.make("FrozenLake", render_mode="human") # default map_name = 4x4, is_slippery=True
 #env = gym.make("FrozenLake", map_name="8x8", render_mode="human") # double the map size to 8 by 8
 #env = gym.make("FrozenLake", map_name="8x8", is_slippery=False, render_mode="human") # non-slippery mode
 #env = gym.make("FrozenLake", desc = None , map_name="8x8",  is_slippery=False, render_mode="human") # generate a random map each time
 
-from gymnasium.envs.toy_text.frozen_lake import generate_random_map
-env = gym.make("FrozenLake", desc = generate_random_map(8), map_name="8x8",  is_slippery=False, render_mode="human") # generate a random map each time
+#from gymnasium.envs.toy_text.frozen_lake import generate_random_map
+#env = gym.make("FrozenLake", desc = generate_random_map(8), map_name="8x8",  is_slippery=False, render_mode="human") # generate a random map each time
 
 observation, info = env.reset(seed=42)
 

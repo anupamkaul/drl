@@ -62,10 +62,19 @@ class DiscreteOneHotWrapper(gym.ObservationWrapper):
 		res[observation] = 1.0
 		return res
 
-from gymnasium.envs.toy_text.frozen_lake import generate_random_map
+#from gymnasium.envs.toy_text.frozen_lake import generate_random_map
 #env = gym.make("FrozenLake", desc = generate_random_map(8), map_name="8x8",  is_slippery=False, render_mode="human") # generate a random map each time
 
-env = DiscreteOneHotWrapper(gym.make("FrozenLake-v1", desc = generate_random_map(8), map_name="8x8",  is_slippery=False, render_mode="human")) # generate a random map each time
+#env = DiscreteOneHotWrapper(gym.make("FrozenLake-v1", desc = generate_random_map(8), map_name="8x8",  is_slippery=False, render_mode="human")) # generate a random map each time
+
+''' 
+Since good rewards are scarce, let's make the problem easier by making frozen lake less complicated. Let's go with the default
+map (not the 8*8 random one). The Gamma, Episode Length and Number and Learning Rate parameters might work better with a simpler
+solution, i.e. the probability of getting Reward 1 on hitting the goal is intuitively higher when the problem space is less complicated.
+Once we have a successful model, we can randomize and make it learn more on a random 8*8 grid
+'''
+
+env = DiscreteOneHotWrapper(gym.make("FrozenLake-v1", is_slippery=False, render_mode="human")) # generate the default simple map to start
 
 #env = gym.wrappers.Monitor(env, "recording")
 # observation, info = env.reset(seed=42)
@@ -164,14 +173,14 @@ def iterate_batches(env, net, batch_size):
 		# write some more
 
 		episode_reward += reward
-		print ("\riterate_batches", " episode_reward: ", episode_reward, "\n", end=' ', flush=True)
+		# print ("\riterate_batches", " episode_reward: ", episode_reward, "\n", end=' ', flush=True)
 		episode_steps.append(EpisodeStep(observation=obs, action=action))
 
 		if is_done:
 
 			print("\riterate_batches", "episode ", len(batch) + 1, " TERMINATED (after ", steps, "steps)", end = ' ', flush=True)
 			#print("batch up this episode..\n")
-			time.sleep(1)
+			#time.sleep(1)
 
 			batch.append(Episode(reward=episode_reward, steps = episode_steps))	
 			#print("\rbatch: ", batch, "\n", end = ' ', flush=True)
@@ -261,7 +270,7 @@ n_actions = env.action_space.n
 # but because the sum total/flattened tensor then is different
 
 net = Net(obs_size, HIDDEN_SIZE, n_actions)
-net = load_model()
+#net = load_model()
 
 objective = nn.CrossEntropyLoss()
 
