@@ -1,0 +1,377 @@
+Snippet attached showing random reward=1 runs and that we run the network:
+
+      dtype=float32), action=0), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=2)]), Episode(reward=1.0, steps=[EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=2)])] 
+
+main: run the network!
+
+8: loss=1.364, reward_mean=0.0, reward_bound=0.0
+iterate_batches episode  100  TERMINATED (after  12 steps) mean reward:  0.0 
+
+fiter_batch: discounted_reward:  0.4304672100000001 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.3486784401000001 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.3486784401000001 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.07976644307687256 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.10941898913151242 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.18530201888518416 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.3486784401000001 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.10941898913151242 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.06461081889226677 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.531441 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.2287679245496101 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.31381059609000006 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.18530201888518416 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.2824295364810001 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.2824295364810001 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.4304672100000001 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+fiter_batch: discounted_reward:  0.0 reward_bound:  0.0 
+ full batch :  [Episode(reward=1.0, steps=[EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=2)]), Episode(reward=1.0, steps=[EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=2)]), Episode(reward=1.0, steps=[EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=2)]), Episode(reward=1.0, steps=[EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=2)]), Episode(reward=1.0, steps=[EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=2)]), Episode(reward=1.0, steps=[EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=2)]), Episode(reward=1.0, steps=[EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=2)]), Episode(reward=1.0, steps=[EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=2)]), Episode(reward=1.0, steps=[EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=2)]), Episode(reward=1.0, steps=[EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=2)]), Episode(reward=1.0, steps=[EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=2)]), Episode(reward=1.0, steps=[EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=2)]), Episode(reward=1.0, steps=[EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=2)]), Episode(reward=1.0, steps=[EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=2)]), Episode(reward=1.0, steps=[EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=3), EpisodeStep(observation=array([0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=2)]), Episode(reward=1.0, steps=[EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=0), EpisodeStep(observation=array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.],
+      dtype=float32), action=2), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.],
+      dtype=float32), action=1), EpisodeStep(observation=array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+      dtype=float32), action=2)])] 
+
+main: run the network!
+
+9: loss=1.361, reward_mean=0.0, reward_bound=0.0
+iterate_batches episode  47  TERMINATED (after  6 steps) ^C
+saving model
+
