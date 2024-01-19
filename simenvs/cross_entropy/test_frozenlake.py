@@ -270,7 +270,7 @@ n_actions = env.action_space.n
 # but because the sum total/flattened tensor then is different
 
 net = Net(obs_size, HIDDEN_SIZE, n_actions)
-#net = load_model()
+net = load_model()
 
 objective = nn.CrossEntropyLoss()
 
