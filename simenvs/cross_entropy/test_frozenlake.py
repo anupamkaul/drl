@@ -211,7 +211,7 @@ def filter_batch(batch, percentile):
 
 	for example, discounted_reward in zip(batch, discounted_rewards):
 
-		print("\rfiter_batch: discounted_reward: ", discounted_reward, "reward_bound: ", reward_bound, "\n", end=' ', flush=True); 
+		print("\rfiter_batch: discounted_reward: ", discounted_reward, "reward_bound: ", reward_bound, end=' ', flush=True); 
 
 		if discounted_reward > reward_bound:
 			train_obs.extend(map(lambda step: step.observation, example.steps))
@@ -298,10 +298,10 @@ for iter_no, batch in enumerate(iterate_batches(env, net, BATCH_SIZE)):
 	#time.sleep(2)
 
 	reward_mean = float(np.mean(list(map(lambda s: s.reward, batch))))
-	print("mean reward: ", reward_mean, "\n")
+	#print("mean reward: ", reward_mean, "\n")
 
 	full_batch, obs, acts, reward_bound = filter_batch(full_batch + batch, PERCENTILE)
-	print("full batch : ", full_batch, "\n")
+	#print("full batch : ", full_batch, "\n")
 
 	if not full_batch:
 		print("not full batch, skip and go back to iterate_batches\n")
@@ -342,7 +342,7 @@ for iter_no, batch in enumerate(iterate_batches(env, net, BATCH_SIZE)):
 
 	# explanations
 
-	if reward_mean > 199:
+	if reward_mean > 0.8:
 		print("RL Solved !!\n")
 		#break
 
