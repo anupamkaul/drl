@@ -308,7 +308,7 @@ for iter_no, batch in enumerate(iterate_batches(env, net, BATCH_SIZE)):
 		continue
 
 	import torch
-	obs_v = torch.FloatTensor(obs)
+	obs_v = torch.FloatTensor(np.array(obs))
 	acts_v = torch.LongTensor(acts)
 	full_batch = full_batch[-500:]
 
