@@ -333,7 +333,7 @@ for iter_no, batch in enumerate(iterate_batches(env, net, BATCH_SIZE)):
 
 	# explanations
 
-	print("%d: loss=%.3f, reward_mean=%.1f, reward_bound=%.1f" % (iter_no, loss_v.item(), reward_mean, reward_bound))
+	print("%d: loss=%.3f, reward_mean=%.3f, reward_bound=%.3f" % (iter_no, loss_v.item(), reward_mean, reward_bound))
 	time.sleep(5) # is reward_mean increasing? (that shows convergence)
 
 	writer.add_scalar("loss", loss_v.item(), iter_no)
