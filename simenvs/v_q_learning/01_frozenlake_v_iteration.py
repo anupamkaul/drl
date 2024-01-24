@@ -29,8 +29,20 @@ class Agent:
             action = self.env.action_space.sample()
             #new_state, reward, is_done, _ = self.env.step(action)
             new_state, reward, is_done, truncated, info = self.env.step(action)
+
+            #unhashable because env now contains state transition probability expressed as a dict itself inside state
             #self.rewards[(self.state, action, new_state)] = reward
-            print(self.state, "\n\n", type(self.state))
+
+            # quick hack to find out the offending dict type within the tuple self.state
+            print(self.state, "\n\n", type(self.state), len(self.state), "\n") 
+            i = 0
+            while i < len(self.state):
+                print("type: ", type(self.state[i]), "val: ", self.state[i])
+                i = i + 1
+
+#            for k, v in self.state.items():
+#                print("key ", k, " value ", v, "\n")
+
             self.rewards[action, new_state] = reward
             self.transits[(self.state, action)][new_state] += 1
             self.state = self.env.reset() if is_done else new_state
