@@ -37,6 +37,7 @@ class Agent:
             # quick hack to find out the offending dict type within the tuple self.state
             print("\nintrospecting self.state..")
             print("self.state: ", self.state, " type of self.state" , type(self.state), " number of elements: ", len(self.state), "\n") 
+            print("new_state: ", new_state, " type of new.state", type(new_state))
             i = 0
             print("count: ", _, "\n")
 
@@ -49,12 +50,23 @@ class Agent:
             for k, v in self.state[1].items():
                 print("key ", k, " value ", v, "\n") # this reveals the 'name' of the key in the dict..
 
+            #rewards_key = self.state[0] + self.state[1]["prob"] + action + new_state
+            rewards_key = (self.state[0], self.state[1]["prob"],  action,  new_state)
+            #rewards_key = (self.state[0], self.state[1]["prob"],  action,  new_state[0], newstate[1]["prob"])
+            print("rewards key: ", rewards_key, "\n")
+
             self.rewards[(self.state[0], self.state[1]["prob"], action, new_state)] = reward
             print("\npass the self.rewards hash assigment of reward\n")
 
             # original code continue...
-            self.transits[(self.state, action)][new_state] += 1
+            #self.transits[(self.state, action)][new_state] += 1
+            self.transits[(self.state[0], self.state[1]["prob"], action)][new_state] += 1
+            print("\npass the self.transits hash assigment of transits\n")
+
             self.state = self.env.reset() if is_done else new_state
+           
+            print("after env.reset self.state: ", self.state, " type of self.state" , type(self.state), "\n") 
+            print("after env.reset self.state: ", self.state, " type of self.state" , type(self.state), " number of elements: ", len(self.state), "\n") 
 
     def calc_action_value(self, state, action):
         target_counts = self.transits[(state, action)]
