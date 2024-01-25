@@ -27,10 +27,10 @@ class Agent:
     def play_n_random_steps(self, count):
         for _ in range(count):
             action = self.env.action_space.sample()
-            #new_state, reward, is_done, _ = self.env.step(action)
             new_state, reward, is_done, truncated, info = self.env.step(action)
 
             #unhashable because env now contains state transition probability expressed as a dict itself inside state
+
             #self.rewards[(self.state, action, new_state)] = reward
 
             # original code break for introspection...
@@ -50,7 +50,6 @@ class Agent:
             for k, v in self.state[1].items():
                 print("key ", k, " value ", v, "\n") # this reveals the 'name' of the key in the dict..
 
-            #rewards_key = self.state[0] + self.state[1]["prob"] + action + new_state
             rewards_key = (self.state[0], self.state[1]["prob"],  action,  new_state)
             #rewards_key = (self.state[0], self.state[1]["prob"],  action,  new_state[0], newstate[1]["prob"])
             print("rewards key: ", rewards_key, "\n")
