@@ -9,11 +9,12 @@ ENV_NAME = "FrozenLake-v1"
 GAMMA = 0.9
 TEST_EPISODES = 20
 
+import time
 
 class Agent:
     def __init__(self):
         self.env = gym.make(ENV_NAME)
-        self.state = self.env.reset()
+        self.state = self.env.reset(seed=42)
 
 	#rewards table
         self.rewards = collections.defaultdict(float)
@@ -36,11 +37,12 @@ class Agent:
             # original code break for introspection...
             # quick hack to find out the offending dict type within the tuple self.state
             print("\nintrospecting self.state..")
-            print("self.state: ", self.state, " type of self.state" , type(self.state), " number of elements: ", len(self.state), "\n") 
+            #print("self.state: ", self.state, " type of self.state" , type(self.state), " number of elements: ", len(self.state), "\n") 
             print("new_state: ", new_state, " type of new.state", type(new_state))
             i = 0
             print("count: ", _, "\n")
 
+            '''
             print("\nintrospecting self.state tuple..")
             while i < len(self.state):
                 print("type: ", type(self.state[i]), "val: ", self.state[i])
@@ -54,18 +56,21 @@ class Agent:
             #rewards_key = (self.state[0], self.state[1]["prob"],  action,  new_state[0], newstate[1]["prob"])
             print("rewards key: ", rewards_key, "\n")
 
-            self.rewards[(self.state[0], self.state[1]["prob"], action, new_state)] = reward
+            #self.rewards[(self.state[0], self.state[1]["prob"], action, new_state)] = reward
             print("\npass the self.rewards hash assigment of reward\n")
 
             # original code continue...
             #self.transits[(self.state, action)][new_state] += 1
-            self.transits[(self.state[0], self.state[1]["prob"], action)][new_state] += 1
+            # self.transits[(self.state[0], self.state[1]["prob"], action)][new_state] += 1
             print("\npass the self.transits hash assigment of transits\n")
-
-            self.state = self.env.reset() if is_done else new_state
+            '''
+            
+            self.state = self.env.reset(seed=42) if is_done else new_state
            
             print("after env.reset self.state: ", self.state, " type of self.state" , type(self.state), "\n") 
-            print("after env.reset self.state: ", self.state, " type of self.state" , type(self.state), " number of elements: ", len(self.state), "\n") 
+            time.sleep(2)
+            
+            #print("after env.reset self.state: ", self.state, " type of self.state" , type(self.state), " number of elements: ", len(self.state), "\n") 
 
     def calc_action_value(self, state, action):
         target_counts = self.transits[(state, action)]
@@ -87,7 +92,7 @@ class Agent:
 
     def play_episode(self, env):
         total_reward = 0.0
-        state = env.reset()
+        state = env.reset(seed=42)
         while True:
             action = self.select_action(state)
             new_state, reward, is_done, _ = env.step(action)

@@ -1,0 +1,112 @@
+introspecting self.state..
+new_state:  1  type of new.state <class 'int'>
+count:  0 
+
+after env.reset self.state:  1  type of self.state <class 'int'> 
+
+
+introspecting self.state..
+new_state:  5  type of new.state <class 'int'>
+count:  1 
+
+after env.reset self.state:  (0, {'prob': 1})  type of self.state <class 'tuple'> 
+
+
+introspecting self.state..
+new_state:  0  type of new.state <class 'int'>
+count:  2 
+
+after env.reset self.state:  0  type of self.state <class 'int'> 
+
+
+introspecting self.state..
+new_state:  4  type of new.state <class 'int'>
+count:  3 
+
+after env.reset self.state:  4  type of self.state <class 'int'> 
+
+
+introspecting self.state..
+new_state:  4  type of new.state <class 'int'>
+count:  4 
+
+after env.reset self.state:  4  type of self.state <class 'int'> 
+
+
+introspecting self.state..
+new_state:  4  type of new.state <class 'int'>
+count:  5 
+
+after env.reset self.state:  4  type of self.state <class 'int'> 
+
+
+introspecting self.state..
+new_state:  4  type of new.state <class 'int'>
+count:  6 
+
+after env.reset self.state:  4  type of self.state <class 'int'> 
+
+
+introspecting self.state..
+new_state:  0  type of new.state <class 'int'>
+count:  7 
+
+after env.reset self.state:  0  type of self.state <class 'int'> 
+
+
+introspecting self.state..
+new_state:  1  type of new.state <class 'int'>
+count:  8 
+
+after env.reset self.state:  1  type of self.state <class 'int'> 
+
+
+introspecting self.state..
+new_state:  5  type of new.state <class 'int'>
+count:  9 
+
+after env.reset self.state:  (0, {'prob': 1})  type of self.state <class 'tuple'> 
+
+
+introspecting self.state..
+new_state:  1  type of new.state <class 'int'>
+count:  10 
+
+after env.reset self.state:  1  type of self.state <class 'int'> 
+
+
+introspecting self.state..
+new_state:  1  type of new.state <class 'int'>
+count:  11 
+
+after env.reset self.state:  1  type of self.state <class 'int'> 
+
+
+introspecting self.state..
+new_state:  5  type of new.state <class 'int'>
+count:  12 
+
+after env.reset self.state:  (0, {'prob': 1})  type of self.state <class 'tuple'> 
+
+
+introspecting self.state..
+new_state:  1  type of new.state <class 'int'>
+count:  13 
+
+after env.reset self.state:  1  type of self.state <class 'int'> 
+
+
+introspecting self.state..
+new_state:  1  type of new.state <class 'int'>
+count:  14 
+
+after env.reset self.state:  1  type of self.state <class 'int'> 
+
+
+introspecting self.state..
+new_state:  0  type of new.state <class 'int'>
+count:  15 
+
+after env.reset self.state:  0  type of self.state <class 'int'> 
+
+
