@@ -5,6 +5,7 @@ import collections
 from tensorboardX import SummaryWriter
 
 #ENV_NAME = "FrozenLake-v0"
+#gym.make("FrozenLake-v1", is_slippery=False, render_mode="human")
 ENV_NAME = "FrozenLake-v1"
 GAMMA = 0.9
 TEST_EPISODES = 20
@@ -13,7 +14,7 @@ import time
 
 class Agent:
     def __init__(self):
-        self.env = gym.make(ENV_NAME)
+        self.env = gym.make(ENV_NAME, is_slippery=False, render_mode="human")
         self.state = self.env.reset(seed=42)
 
 	#rewards table
