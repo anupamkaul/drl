@@ -4,18 +4,18 @@ import gymnasium as gym
 import collections
 from tensorboardX import SummaryWriter
 
-#ENV_NAME = "FrozenLake-v0"
-#gym.make("FrozenLake-v1", is_slippery=False, render_mode="human")
 ENV_NAME = "FrozenLake-v1"
 GAMMA = 0.9
 TEST_EPISODES = 20
 
-import time
+#import time
 
 class Agent:
     def __init__(self):
         self.env = gym.make(ENV_NAME, is_slippery=False, render_mode="human")
         self.state = self.env.reset(seed=42)
+        print("INIT : self.state: ", self.state, " type of self.state" , type(self.state), "\n") 
+        self.state = 0 # override, because it anyways returns self.state:  (0, {'prob': 1})  type of self.state <class 'tuple'>
 
 	#rewards table
         self.rewards = collections.defaultdict(float)
@@ -31,9 +31,7 @@ class Agent:
             action = self.env.action_space.sample()
             new_state, reward, is_done, truncated, info = self.env.step(action)
 
-            #unhashable because env now contains state transition probability expressed as a dict itself inside state
-
-            #self.rewards[(self.state, action, new_state)] = reward
+            self.rewards[(self.state, action, new_state)] = reward
 
             # original code break for introspection...
             # quick hack to find out the offending dict type within the tuple self.state
@@ -61,15 +59,24 @@ class Agent:
             print("\npass the self.rewards hash assigment of reward\n")
 
             # original code continue...
-            #self.transits[(self.state, action)][new_state] += 1
+            self.transits[(self.state, action)][new_state] += 1
+
             # self.transits[(self.state[0], self.state[1]["prob"], action)][new_state] += 1
             print("\npass the self.transits hash assigment of transits\n")
             '''
             
-            self.state = self.env.reset(seed=42) if is_done else new_state
+            self.transits[(self.state, action)][new_state] += 1
+
+            #self.state = self.env.reset(seed=42) if is_done else new_state
+
+            if is_done:
+                self.state = self.env.reset(seed=42)
+                self.state = 0 # override, because it anyways returns self.state:  (0, {'prob': 1})  type of self.state <class 'tuple'>
+            else:
+                self.state = new_state
            
             print("after env.reset self.state: ", self.state, " type of self.state" , type(self.state), "\n") 
-            time.sleep(2)
+            #time.sleep(2)
             
             #print("after env.reset self.state: ", self.state, " type of self.state" , type(self.state), " number of elements: ", len(self.state), "\n") 
 
@@ -92,11 +99,13 @@ class Agent:
         return best_action
 
     def play_episode(self, env):
+        print("agent: play episode")
         total_reward = 0.0
         state = env.reset(seed=42)
+        state = 0 # override, because it anyways returns self.state:  (0, {'prob': 1})  type of self.state <class 'tuple'>
         while True:
             action = self.select_action(state)
-            new_state, reward, is_done, _ = env.step(action)
+            new_state, reward, is_done, truncated, info = env.step(action)
             self.rewards[(state, action, new_state)] = reward
             self.transits[(state, action)][new_state] += 1
             total_reward += reward
@@ -113,7 +122,7 @@ class Agent:
 
 
 if __name__ == "__main__":
-    test_env = gym.make(ENV_NAME)
+    test_env = gym.make(ENV_NAME, is_slippery=False, render_mode="human") # why are we creating 2 envs, one here and one inside the agent class ??
     agent = Agent()
     writer = SummaryWriter(comment="-v-iteration")
 
@@ -122,9 +131,12 @@ if __name__ == "__main__":
     while True:
         iter_no += 1
         agent.play_n_random_steps(100)
+        print("begin agent's value iteration")
         agent.value_iteration()
+        print("end agent's value iteration")
 
         reward = 0.0
+        print("Enter TEST_EPISODES")
         for _ in range(TEST_EPISODES):
             reward += agent.play_episode(test_env)
         reward /= TEST_EPISODES
