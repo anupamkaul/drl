@@ -105,13 +105,19 @@ class Agent:
         state = 0 # override, because it anyways returns self.state:  (0, {'prob': 1})  type of self.state <class 'tuple'>
         while True:
             action = self.select_action(state)
+            print("\nnew_action: ", action)
+            # test
+            action = 2 # just go right
             new_state, reward, is_done, truncated, info = env.step(action)
+            print("new_state: ", new_state)
             self.rewards[(state, action, new_state)] = reward
             self.transits[(state, action)][new_state] += 1
             total_reward += reward
+            print("\rtotal rewards: ", total_reward, end = ' ', flush=True)
             if is_done:
                 break
             state = new_state
+        
         return total_reward
 
     def value_iteration(self):
