@@ -12,7 +12,10 @@ TEST_EPISODES = 20
 
 class Agent:
     def __init__(self):
+
+        # check: does make go via register, because register sets max_steps at 4*4 to 100 but it doesn't work
         self.env = gym.make(ENV_NAME, is_slippery=False, render_mode="human")
+
         self.state = self.env.reset(seed=42)
         print("INIT : self.state: ", self.state, " type of self.state" , type(self.state), "\n") 
         self.state = 0 # override, because it anyways returns self.state:  (0, {'prob': 1})  type of self.state <class 'tuple'>
@@ -103,17 +106,28 @@ class Agent:
         total_reward = 0.0
         state = env.reset(seed=42)
         state = 0 # override, because it anyways returns self.state:  (0, {'prob': 1})  type of self.state <class 'tuple'>
+        episode_counter=0
+ 
+        # restricting to 100 steps doesn't work, need to check if code goes via registry, disable for now
+        #env = gym.wrappers.TimeLimit(env, max_episode_steps=100)
+
         while True:
             action = self.select_action(state)
             print("\nnew_action: ", action)
-            # test
-            action = 2 # just go right
+
+            # test start
+            #action = 2 # just go right
+            # randomize action instead of selection the best, just to see if play_episode ends
+            action = self.env.action_space.sample()
+            # test end           
+
             new_state, reward, is_done, truncated, info = env.step(action)
             print("new_state: ", new_state)
             self.rewards[(state, action, new_state)] = reward
             self.transits[(state, action)][new_state] += 1
             total_reward += reward
-            print("\rtotal rewards: ", total_reward, end = ' ', flush=True)
+            episode_counter=episode_counter+1
+            print("\rtotal rewards: ", total_reward, "counter: ", episode_counter, end = ' ', flush=True)
             if is_done:
                 break
             state = new_state
