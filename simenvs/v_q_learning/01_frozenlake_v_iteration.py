@@ -129,6 +129,7 @@ class Agent:
             episode_counter=episode_counter+1
             print("\rtotal rewards: ", total_reward, "counter: ", episode_counter, end = ' ', flush=True)
             if is_done:
+                print("BREAK : We got Is_Done\n")
                 break
             state = new_state
         
@@ -160,6 +161,7 @@ if __name__ == "__main__":
         for _ in range(TEST_EPISODES):
             reward += agent.play_episode(test_env)
         reward /= TEST_EPISODES
+        print("%d Reward is now %.3f\n", iter_no, reward)
         writer.add_scalar("reward", reward, iter_no)
         if reward > best_reward:
             print("Best reward updated %.3f -> %.3f" % (best_reward, reward))
