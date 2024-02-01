@@ -14,7 +14,7 @@ class Agent:
     def __init__(self):
 
         # check: does make go via register, because register sets max_steps at 4*4 to 100 but it doesn't work
-        self.env = gym.make(ENV_NAME, is_slippery=False, render_mode="human")
+        self.env = gym.make(ENV_NAME, is_slippery=False, render_mode="human", max_episode_steps=100)
 
         self.state = self.env.reset(seed=42)
         print("INIT : self.state: ", self.state, " type of self.state" , type(self.state), "\n") 
@@ -142,7 +142,7 @@ class Agent:
 
 
 if __name__ == "__main__":
-    test_env = gym.make(ENV_NAME, is_slippery=False, render_mode="human") # why are we creating 2 envs, one here and one inside the agent class ??
+    test_env = gym.make(ENV_NAME, is_slippery=False, render_mode="human", max_episode_steps=100) # why are we creating 2 envs, one here and one inside the agent class ??
     agent = Agent()
     writer = SummaryWriter(comment="-v-iteration")
 
