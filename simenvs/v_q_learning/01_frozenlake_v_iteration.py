@@ -17,7 +17,7 @@ class Agent:
         self.env = gym.make(ENV_NAME, is_slippery=False, render_mode="human", max_episode_steps=100)
 
         self.state = self.env.reset(seed=42)
-        print("INIT : self.state: ", self.state, " type of self.state" , type(self.state), "\n") 
+        #print("INIT : self.state: ", self.state, " type of self.state" , type(self.state), "\n") 
         self.state = 0 # override, because it anyways returns self.state:  (0, {'prob': 1})  type of self.state <class 'tuple'>
 
 	#rewards table
@@ -34,54 +34,23 @@ class Agent:
             action = self.env.action_space.sample()
             new_state, reward, is_done, truncated, info = self.env.step(action)
 
+            print("\rplay_n_random_steps: count: ", _, end= ' ',flush=True)
+
             self.rewards[(self.state, action, new_state)] = reward
-
-            # original code break for introspection...
-            # quick hack to find out the offending dict type within the tuple self.state
-            print("\nintrospecting self.state..")
-            #print("self.state: ", self.state, " type of self.state" , type(self.state), " number of elements: ", len(self.state), "\n") 
-            print("new_state: ", new_state, " type of new.state", type(new_state))
-            i = 0
-            print("count: ", _, "\n")
-
-            '''
-            print("\nintrospecting self.state tuple..")
-            while i < len(self.state):
-                print("type: ", type(self.state[i]), "val: ", self.state[i])
-                i = i + 1
-
-            print("\nintrospectng the dict element in the tuple..")
-            for k, v in self.state[1].items():
-                print("key ", k, " value ", v, "\n") # this reveals the 'name' of the key in the dict..
-
-            rewards_key = (self.state[0], self.state[1]["prob"],  action,  new_state)
-            #rewards_key = (self.state[0], self.state[1]["prob"],  action,  new_state[0], newstate[1]["prob"])
-            print("rewards key: ", rewards_key, "\n")
-
-            #self.rewards[(self.state[0], self.state[1]["prob"], action, new_state)] = reward
-            print("\npass the self.rewards hash assigment of reward\n")
-
-            # original code continue...
             self.transits[(self.state, action)][new_state] += 1
-
-            # self.transits[(self.state[0], self.state[1]["prob"], action)][new_state] += 1
-            print("\npass the self.transits hash assigment of transits\n")
-            '''
-            
-            self.transits[(self.state, action)][new_state] += 1
-
-            #self.state = self.env.reset(seed=42) if is_done else new_state
 
             if is_done:
                 self.state = self.env.reset(seed=42)
                 self.state = 0 # override, because it anyways returns self.state:  (0, {'prob': 1})  type of self.state <class 'tuple'>
             else:
                 self.state = new_state
+
+        import time
+        print("at end of play_n_random_steps: self.rewards = ", self.rewards)
+        time.sleep(2)
+        print("at end of play_n_random_steps: self.transits = ", self.transits)
+        time.sleep(2)
            
-            print("after env.reset self.state: ", self.state, " type of self.state" , type(self.state), "\n") 
-            #time.sleep(2)
-            
-            #print("after env.reset self.state: ", self.state, " type of self.state" , type(self.state), " number of elements: ", len(self.state), "\n") 
 
     def calc_action_value(self, state, action):
         target_counts = self.transits[(state, action)]
@@ -113,7 +82,7 @@ class Agent:
 
         while True:
             action = self.select_action(state)
-            print("\nnew_action: ", action)
+            #print("\nnew_action: ", action)
 
             # test start
             #action = 2 # just go right
@@ -122,12 +91,12 @@ class Agent:
             # test end           
 
             new_state, reward, is_done, truncated, info = env.step(action)
-            print("new_state: ", new_state)
+            #print("new_state: ", new_state)
             self.rewards[(state, action, new_state)] = reward
             self.transits[(state, action)][new_state] += 1
             total_reward += reward
             episode_counter=episode_counter+1
-            print("\rtotal rewards: ", total_reward, "counter: ", episode_counter, end = ' ', flush=True)
+            print("\rplay_episode: total rewards: ", total_reward, "counter: ", episode_counter, end = ' ', flush=True)
             if is_done:
                 print("BREAK: We got Is_Done\n")
                 break
