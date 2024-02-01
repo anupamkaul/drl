@@ -129,10 +129,11 @@ class Agent:
             episode_counter=episode_counter+1
             print("\rtotal rewards: ", total_reward, "counter: ", episode_counter, end = ' ', flush=True)
             if is_done:
-                print("BREAK : We got Is_Done\n")
+                print("BREAK: We got Is_Done\n")
                 break
             state = new_state
         
+        print("WE RETURN TOTAL REWARD", total_reward, "\n")
         return total_reward
 
     def value_iteration(self):
@@ -143,6 +144,7 @@ class Agent:
 
 
 if __name__ == "__main__":
+    import time
     test_env = gym.make(ENV_NAME, is_slippery=False, render_mode="human", max_episode_steps=100) # why are we creating 2 envs, one here and one inside the agent class ??
     agent = Agent()
     writer = SummaryWriter(comment="-v-iteration")
@@ -159,9 +161,11 @@ if __name__ == "__main__":
         reward = 0.0
         print("Enter TEST_EPISODES")
         for _ in range(TEST_EPISODES):
+            print("Call play_episode ", _ , " of ", TEST_EPISODES, "\n")
             reward += agent.play_episode(test_env)
         reward /= TEST_EPISODES
-        print("%d Reward is now %.3f\n", iter_no, reward)
+        print("%d Reward is now %.3f\n" % (iter_no, reward))
+        time.sleep(2)
         writer.add_scalar("reward", reward, iter_no)
         if reward > best_reward:
             print("Best reward updated %.3f -> %.3f" % (best_reward, reward))
