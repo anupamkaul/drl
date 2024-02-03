@@ -46,9 +46,9 @@ class Agent:
                 self.state = new_state
 
         import time
-        print("at end of play_n_random_steps: self.rewards = ", self.rewards)
+        print("at end of play_n_random_steps: self.rewards = ", self.rewards, "\n there are ", len(self.rewards), " unique <s,a,s> that were mapped" )
         time.sleep(2)
-        print("at end of play_n_random_steps: self.transits = ", self.transits)
+        print("at end of play_n_random_steps: self.transits = ", self.transits, "\n there are ", len(self.transits), " unique transits that were mapped")
         time.sleep(2)
            
 

@@ -1,112 +1,162 @@
-introspecting self.state..
-new_state:  1  type of new.state <class 'int'>
-count:  0 
+anupkaul@147dda4c0851 v_q_learning % python3 01_frozenlake_v_iteration.py
+2024-02-02 16:59:44.283 Python[11551:862634] WARNING: Secure coding is automatically enabled for restorable state! However, not on all supported macOS versions of this application. Opt-in to secure coding explicitly by implementing NSApplicationDelegate.applicationSupportsSecureRestorableState:.
+play_n_random_steps: count:  99 at end of play_n_random_steps: self.rewards =  defaultdict(<class 'float'>, {(0, 2, 1): 0.0, (1, 1, 5): 0.0, (0, 0, 0): 0.0, (0, 3, 0): 0.0, (0, 1, 4): 0.0, (4, 0, 4): 0.0, (4, 2, 5): 0.0, (1, 3, 1): 0.0, (1, 0, 0): 0.0, (4, 1, 8): 0.0, (8, 2, 9): 0.0, (9, 0, 8): 0.0, (8, 1, 12): 0.0, (4, 3, 0): 0.0, (8, 0, 8): 0.0, (9, 3, 5): 0.0, (9, 1, 13): 0.0, (13, 2, 14): 0.0, (14, 1, 14): 0.0, (14, 2, 15): 1.0, (1, 2, 2): 0.0, (2, 3, 2): 0.0, (2, 0, 1): 0.0, (2, 1, 6): 0.0, (6, 2, 7): 0.0}) 
+ there are  25  unique <s,a,s> that were mapped
+at end of play_n_random_steps: self.transits =  defaultdict(<class 'collections.Counter'>, {(0, 2): Counter({1: 10}), (1, 1): Counter({5: 4}), (0, 0): Counter({0: 14}), (0, 3): Counter({0: 20}), (0, 1): Counter({4: 12}), (4, 0): Counter({4: 2}), (4, 2): Counter({5: 2}), (1, 3): Counter({1: 3}), (1, 0): Counter({0: 5}), (4, 1): Counter({8: 4}), (8, 2): Counter({9: 3}), (9, 0): Counter({8: 1}), (8, 1): Counter({12: 2}), (4, 3): Counter({0: 6}), (8, 0): Counter({8: 1}), (9, 3): Counter({5: 1}), (9, 1): Counter({13: 1}), (13, 2): Counter({14: 1}), (14, 1): Counter({14: 1}), (14, 2): Counter({15: 1}), (1, 2): Counter({2: 2}), (2, 3): Counter({2: 1}), (2, 0): Counter({1: 1}), (2, 1): Counter({6: 1}), (6, 2): Counter({7: 1})}) 
+ there are  25  unique transits that were mapped
+begin agent's value iteration
+end agent's value iteration
+Enter TEST_EPISODES
+Call play_episode  0  of  20 
 
-after env.reset self.state:  1  type of self.state <class 'int'> 
+agent: play episode
+play_episode: total rewards:  0.0 counter:  5 BREAK: We got Is_Done
 
+WE RETURN TOTAL REWARD 0.0 
 
-introspecting self.state..
-new_state:  5  type of new.state <class 'int'>
-count:  1 
+Call play_episode  1  of  20 
 
-after env.reset self.state:  (0, {'prob': 1})  type of self.state <class 'tuple'> 
+agent: play episode
+play_episode: total rewards:  0.0 counter:  3 BREAK: We got Is_Done
 
+WE RETURN TOTAL REWARD 0.0 
 
-introspecting self.state..
-new_state:  0  type of new.state <class 'int'>
-count:  2 
+Call play_episode  2  of  20 
 
-after env.reset self.state:  0  type of self.state <class 'int'> 
+agent: play episode
+play_episode: total rewards:  0.0 counter:  10 BREAK: We got Is_Done
 
+WE RETURN TOTAL REWARD 0.0 
 
-introspecting self.state..
-new_state:  4  type of new.state <class 'int'>
-count:  3 
+Call play_episode  3  of  20 
 
-after env.reset self.state:  4  type of self.state <class 'int'> 
+agent: play episode
+play_episode: total rewards:  0.0 counter:  6 BREAK: We got Is_Done
 
+WE RETURN TOTAL REWARD 0.0 
 
-introspecting self.state..
-new_state:  4  type of new.state <class 'int'>
-count:  4 
+Call play_episode  4  of  20 
 
-after env.reset self.state:  4  type of self.state <class 'int'> 
+agent: play episode
+play_episode: total rewards:  0.0 counter:  8 BREAK: We got Is_Done
 
+WE RETURN TOTAL REWARD 0.0 
 
-introspecting self.state..
-new_state:  4  type of new.state <class 'int'>
-count:  5 
+Call play_episode  5  of  20 
 
-after env.reset self.state:  4  type of self.state <class 'int'> 
+agent: play episode
+play_episode: total rewards:  0.0 counter:  7 BREAK: We got Is_Done
 
+WE RETURN TOTAL REWARD 0.0 
 
-introspecting self.state..
-new_state:  4  type of new.state <class 'int'>
-count:  6 
+Call play_episode  6  of  20 
 
-after env.reset self.state:  4  type of self.state <class 'int'> 
+agent: play episode
+play_episode: total rewards:  1.0 counter:  10 BREAK: We got Is_Done
 
+WE RETURN TOTAL REWARD 1.0 
 
-introspecting self.state..
-new_state:  0  type of new.state <class 'int'>
-count:  7 
+Call play_episode  7  of  20 
 
-after env.reset self.state:  0  type of self.state <class 'int'> 
+agent: play episode
+play_episode: total rewards:  0.0 counter:  10 BREAK: We got Is_Done
 
+WE RETURN TOTAL REWARD 0.0 
 
-introspecting self.state..
-new_state:  1  type of new.state <class 'int'>
-count:  8 
+Call play_episode  8  of  20 
 
-after env.reset self.state:  1  type of self.state <class 'int'> 
+agent: play episode
+play_episode: total rewards:  0.0 counter:  13 BREAK: We got Is_Done
 
+WE RETURN TOTAL REWARD 0.0 
 
-introspecting self.state..
-new_state:  5  type of new.state <class 'int'>
-count:  9 
+Call play_episode  9  of  20 
 
-after env.reset self.state:  (0, {'prob': 1})  type of self.state <class 'tuple'> 
+agent: play episode
+play_episode: total rewards:  0.0 counter:  4 BREAK: We got Is_Done
 
+WE RETURN TOTAL REWARD 0.0 
 
-introspecting self.state..
-new_state:  1  type of new.state <class 'int'>
-count:  10 
+Call play_episode  10  of  20 
 
-after env.reset self.state:  1  type of self.state <class 'int'> 
+agent: play episode
+play_episode: total rewards:  0.0 counter:  4 BREAK: We got Is_Done
 
+WE RETURN TOTAL REWARD 0.0 
 
-introspecting self.state..
-new_state:  1  type of new.state <class 'int'>
-count:  11 
+Call play_episode  11  of  20 
 
-after env.reset self.state:  1  type of self.state <class 'int'> 
+agent: play episode
+play_episode: total rewards:  0.0 counter:  19 BREAK: We got Is_Done
 
+WE RETURN TOTAL REWARD 0.0 
 
-introspecting self.state..
-new_state:  5  type of new.state <class 'int'>
-count:  12 
+Call play_episode  12  of  20 
 
-after env.reset self.state:  (0, {'prob': 1})  type of self.state <class 'tuple'> 
+agent: play episode
+play_episode: total rewards:  0.0 counter:  13 BREAK: We got Is_Done
 
+WE RETURN TOTAL REWARD 0.0 
 
-introspecting self.state..
-new_state:  1  type of new.state <class 'int'>
-count:  13 
+Call play_episode  13  of  20 
 
-after env.reset self.state:  1  type of self.state <class 'int'> 
+agent: play episode
+play_episode: total rewards:  0.0 counter:  15 BREAK: We got Is_Done
 
+WE RETURN TOTAL REWARD 0.0 
 
-introspecting self.state..
-new_state:  1  type of new.state <class 'int'>
-count:  14 
+Call play_episode  14  of  20 
 
-after env.reset self.state:  1  type of self.state <class 'int'> 
+agent: play episode
+play_episode: total rewards:  0.0 counter:  17 BREAK: We got Is_Done
 
+WE RETURN TOTAL REWARD 0.0 
 
-introspecting self.state..
-new_state:  0  type of new.state <class 'int'>
-count:  15 
+Call play_episode  15  of  20 
 
-after env.reset self.state:  0  type of self.state <class 'int'> 
+agent: play episode
+play_episode: total rewards:  0.0 counter:  7 BREAK: We got Is_Done
+
+WE RETURN TOTAL REWARD 0.0 
+
+Call play_episode  16  of  20 
+
+agent: play episode
+play_episode: total rewards:  0.0 counter:  7 BREAK: We got Is_Done
+
+WE RETURN TOTAL REWARD 0.0 
+
+Call play_episode  17  of  20 
+
+agent: play episode
+play_episode: total rewards:  0.0 counter:  3 BREAK: We got Is_Done
+
+WE RETURN TOTAL REWARD 0.0 
+
+Call play_episode  18  of  20 
+
+agent: play episode
+play_episode: total rewards:  0.0 counter:  3 BREAK: We got Is_Done
+
+WE RETURN TOTAL REWARD 0.0 
+
+Call play_episode  19  of  20 
+
+agent: play episode
+play_episode: total rewards:  0.0 counter:  10 BREAK: We got Is_Done
+
+WE RETURN TOTAL REWARD 0.0 
+
+1 Reward is now 0.050
+
+Best reward updated 0.000 -> 0.050
+play_n_random_steps: count:  99 at end of play_n_random_steps: self.rewards =  defaultdict(<class 'float'>, {(0, 2, 1): 0.0, (1, 1, 5): 0.0, (0, 0, 0): 0.0, (0, 3, 0): 0.0, (0, 1, 4): 0.0, (4, 0, 4): 0.0, (4, 2, 5): 0.0, (1, 3, 1): 0.0, (1, 0, 0): 0.0, (4, 1, 8): 0.0, (8, 2, 9): 0.0, (9, 0, 8): 0.0, (8, 1, 12): 0.0, (4, 3, 0): 0.0, (8, 0, 8): 0.0, (9, 3, 5): 0.0, (9, 1, 13): 0.0, (13, 2, 14): 0.0, (14, 1, 14): 0.0, (14, 2, 15): 1.0, (1, 2, 2): 0.0, (2, 3, 2): 0.0, (2, 0, 1): 0.0, (2, 1, 6): 0.0, (6, 2, 7): 0.0, (6, 1, 10): 0.0, (10, 0, 9): 0.0, (13, 0, 12): 0.0, (8, 3, 4): 0.0, (9, 2, 10): 0.0, (10, 1, 14): 0.0, (14, 3, 10): 0.0, (10, 3, 6): 0.0, (10, 2, 11): 0.0, (14, 0, 13): 0.0, (2, 2, 3): 0.0, (3, 3, 3): 0.0, (3, 0, 2): 0.0, (3, 2, 3): 0.0, (13, 3, 9): 0.0, (13, 1, 13): 0.0}) 
+ there are  41  unique <s,a,s> that were mapped
+at end of play_n_random_steps: self.transits =  defaultdict(<class 'collections.Counter'>, {(0, 2): Counter({1: 33}), (1, 1): Counter({5: 16}), (0, 0): Counter({0: 48}), (0, 3): Counter({0: 45}), (0, 1): Counter({4: 42}), (4, 0): Counter({4: 9}), (4, 2): Counter({5: 12}), (1, 3): Counter({1: 19}), (1, 0): Counter({0: 13}), (4, 1): Counter({8: 16}), (8, 2): Counter({9: 8}), (9, 0): Counter({8: 2}), (8, 1): Counter({12: 7}), (4, 3): Counter({0: 16}), (8, 0): Counter({8: 8}), (9, 3): Counter({5: 2}), (9, 1): Counter({13: 6}), (13, 2): Counter({14: 4}), (14, 1): Counter({14: 3}), (14, 2): Counter({15: 2}), (1, 2): Counter({2: 9}), (2, 3): Counter({2: 4}), (2, 0): Counter({1: 5}), (2, 1): Counter({6: 4}), (6, 2): Counter({7: 1}), (2, 2): Counter({3: 3}), (3, 0): Counter({2: 3}), (3, 1): Counter(), (3, 2): Counter({3: 1}), (3, 3): Counter({3: 1}), (5, 0): Counter(), (5, 1): Counter(), (5, 2): Counter(), (5, 3): Counter(), (6, 0): Counter(), (6, 1): Counter({10: 5}), (6, 3): Counter(), (7, 0): Counter(), (7, 1): Counter(), (7, 2): Counter(), (7, 3): Counter(), (8, 3): Counter({4: 3}), (9, 2): Counter({10: 3}), (10, 0): Counter({9: 4}), (10, 1): Counter({14: 3}), (10, 2): Counter({11: 2}), (10, 3): Counter({6: 2}), (11, 0): Counter(), (11, 1): Counter(), (11, 2): Counter(), (11, 3): Counter(), (12, 0): Counter(), (12, 1): Counter(), (12, 2): Counter(), (12, 3): Counter(), (13, 0): Counter({12: 3}), (13, 1): Counter({13: 1}), (13, 3): Counter({9: 1}), (14, 0): Counter({13: 2}), (14, 3): Counter({10: 3}), (15, 0): Counter(), (15, 1): Counter(), (15, 2): Counter(), (15, 3): Counter()}) 
+ there are  64  unique transits that were mapped
+begin agent's value iteration
+end agent's value iteration
+Enter TEST_EPISODES
+Call play_episode  0  of  20 
 
 
