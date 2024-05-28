@@ -1,3 +1,14 @@
+Note: On Mac pip install components is in:
+/opt/anaconda3/lib/python3.11/site-packages
+
+(Find that out by 'pip show gymnasium' etc)
+
+(may need to pip install <package name> upon a mac update or with multiple projects e.g. mujoco-24)
+(had to re-install gymnasium, torch, tensorboardX and pygame to get drl working again on mac)
+
+-----
+
+
 pip install gymnasium
 Collecting gymnasium
   Downloading gymnasium-0.29.1-py3-none-any.whl (953 kB)
